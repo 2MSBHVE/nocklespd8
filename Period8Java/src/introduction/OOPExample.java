@@ -3,12 +3,19 @@ package introduction;
 public class OOPExample {
 
 	public static void main(String[] args) {
-		Student jillian = new Student("Jillian");
-		Student joseph = new Student("Joseph");
-		Student jordan = new Student("Jordan");
-		jillian.talk();
+		Student jillian = new Senior("Jillian");
+		Student josh = new Sophomore("Josh");
+		Student jordan = new Freshman("Jordan");
+		Student frank = new Student("Frank");
+		
 		jordan.talk();
-		joseph.talk();
+		josh.talk();
+		frank.talk();
+		jillian.talk();
+		
+//		jillian.name = "BaloneyPants";
+//		jillian.talk();
+		
 	}
 
 }
