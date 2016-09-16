@@ -13,6 +13,8 @@ public class OOPExample {
 		frank.talk();
 		jillian.talk();
 		
+		((Junior)jordan).boastScore();
+		
 //		jillian.name = "BaloneyPants";
 //		jillian.talk();
 		
