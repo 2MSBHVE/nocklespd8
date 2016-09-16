@@ -2,9 +2,15 @@ package introduction;
 
 public class Junior extends Student {
 
-	public Junior(String name) {
+	private String examScore;
+	
+	public Junior(String name, String score) {
 		super(name);
-		// TODO Auto-generated constructor stub
+		examScore = score;
+	}
+	
+	public void boastScore(){
+		System.out.println("My score is " + examScore);
 	}
 
 }
