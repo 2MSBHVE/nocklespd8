@@ -3,10 +3,21 @@ package introduction;
 public class RandomDiceRoll {
 
 	public static void main(String[] args) {
-//		declare variable, logic test, increment
-		for(int index = 0; index < 10; index++) {
-			System.out.println("Roll #" + (index + 1)+ ": " + rollUnfairDie());
+//		fill array with 6 zeroes
+		int[] results = new int[6];
+		
+		//		declare variable, logic test, increment
+		for(int index = 0; index < 1000000; index++) {
+			int rollOut = rollFairDie();
+			results[rollOut-1]++;
+			System.out.println("Roll #" + (index + 1)+ ": " + rollOut);
 		}
+		
+		for(int i = 0; i < results.length; i++) {
+			System.out.println((i + 1)+ ": " + results[i]);
+		}
+		
+		
 	}
 	
 	
@@ -21,9 +32,9 @@ public class RandomDiceRoll {
 	public static int rollUnfairDie(){
 		int[] conceptualSides = {1,2,3,4,4,4,5,5,6};
 		int conceptualOutcomes = conceptualSides.length; //length of array
-		double rand = Math.random();//returns a double (0,1)
-		int roll = (int) (conceptualOutcomes*rand);
-		return conceptualSides[roll];
+		double rand2 = Math.random();//returns a double (0,1)
+		int roll2 = (int) (conceptualOutcomes*rand2);
+		return conceptualSides[roll2];
 	}
 
 }
