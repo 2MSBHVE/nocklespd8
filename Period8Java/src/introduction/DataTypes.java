@@ -35,6 +35,12 @@ public class DataTypes {
 		System.out.println("d3 : " + d3);  
 		System.out.println("d1 - d2 : " + (d1 - d2));
 		
+		
+		String ten = "10";
+		String two = "2";
+		
+		System.out.println(ten.compareTo(two) > 0);
+		
 
 		
 	}
