@@ -1,20 +1,29 @@
 package introduction;
 
+import java.util.Scanner;
+
 public class RandomDiceRoll {
 
 	public static void main(String[] args) {
 //		fill array with 6 zeroes
 		int[] results = new int[6];
 		
+		int totalRolls = 200000;
+		
 		//		declare variable, logic test, increment
-		for(int index = 0; index < 1000000; index++) {
+		for(int index = 0; index < totalRolls; index++) {
 			int rollOut = rollFairDie();
 			results[rollOut-1]++;
 			System.out.println("Roll #" + (index + 1)+ ": " + rollOut);
 		}
 		
 		for(int i = 0; i < results.length; i++) {
-			System.out.println((i + 1)+ ": " + results[i]);
+//			System.out.println((i + 1)+ ": " + results[i]);
+			
+			double percentage = (int)(1000*(double)results[i]/totalRolls)/10.0;
+			System.out.println((i + 1)+ " appeared " + percentage + "% of the time.");
+			
+//			System.out.println((i + 1)+ " appeared " + (results[i]%totalRolls) + "times.");
 		}
 		
 		
