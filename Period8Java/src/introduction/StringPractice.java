@@ -66,19 +66,22 @@ public class StringPractice {
 	
 	public static void printwrap(String s){
 		String printString = s;
-		int cutoff = 45;
+		int cutoff = 10;
 		if(printString.length() > cutoff){
-			for(int i = 0; i < s.length(); i++){
-				printString = getCut(s, cutoff, i);
+			for(int i = 0; i*cutoff < s.length(); i++){
+//				append '+='
+				printString += getCut(s, cutoff, i+1) + "\n";
 			}
 		}
-		
 		System.out.println(printString);
 	}
 	
-	private static String getCut(String s, int cutoff, int cut){
+	private static String getCut(String s, int cutoff, int cut, int startIndex){
 		int cutIndex = cut * cutoff;
-		String currentCut = s.substring(0,cutIndex);
+		if(cutIndex > s.length()){
+			cutIndex = s.length();
+		}
+		String currentCut = s.substring(startIndex,cutIndex);
 		
 		int indexOfLastSpace = currentCut.length();
 		for(int i = currentCut.length()-1; i >= 0; i--){
