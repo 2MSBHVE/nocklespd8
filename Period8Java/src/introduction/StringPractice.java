@@ -50,11 +50,7 @@ public class StringPractice {
 			print("true");
 		}
 		
-		Scanner wordScan = new Scanner(System.in);
-		String word1 = wordScan.next();
-		String word2 = wordScan.next();
-		
-		System.out.println(word1.compareTo(word2) < 0);
+		System.out.println(text1.compareTo(text2) < 0);
 	}
 	
 	public static void println(String s){
@@ -65,17 +61,36 @@ public class StringPractice {
 	}
 	
 	public static void printwrap(String s){
-		String printString = s;
-		int cutoff = 10;
-		if(printString.length() > cutoff){
-			for(int i = 0; i*cutoff < s.length(); i++){
-//				append '+='
-				printString += getCut(s, cutoff, i+1) + "\n";
+		String printString = "";
+		int cutoff = 35;
+//		check for words to add
+//		IWO s has length > 0
+		while(s.length() > 0){
+			String cut = "";
+			String nextWord = "";
+//			check to see if the next word will fit on the line AND there must still be words to add
+			while(cut.length() + nextWord.length() < cutoff && s.length() > 0){
+//				add the next word to the line
+				cut += nextWord;
+				
+				s = s.substring(nextWord.length());
+				
+//				identify following word without the spaces
+				int endOfWord = s.indexOf(" ");
+				
+//				if there are no more spaces, this is the last word, so add the whole thing
+				if(endOfWord == -1){
+					endOfWord = s.length() - 1;//-1 for index
+				}
+				
+				nextWord = s.substring(0, endOfWord + 1);
 			}
+			printString += cut + "\n";
 		}
 		System.out.println(printString);
 	}
 	
+	@SuppressWarnings("unused")
 	private static String getCut(String s, int cutoff, int cut, int startIndex){
 		int cutIndex = cut * cutoff;
 		if(cutIndex > s.length()){
