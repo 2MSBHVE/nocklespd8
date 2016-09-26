@@ -1,11 +1,12 @@
-package introduction;
+package Chatbot8;
 
 import java.util.Scanner;
 
-public class StringPractice {
+public class FriedmanMain {
 	
 	static Scanner input;
 	static String user;
+	static String response;
 	
 	public static void main(String[] args) {
 //		demonstrateStringMethods();
@@ -115,3 +116,4 @@ public class StringPractice {
 	}
 
 }
+
