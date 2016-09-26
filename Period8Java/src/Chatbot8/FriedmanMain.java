@@ -9,6 +9,9 @@ public class FriedmanMain {
 	static boolean inMainLoop;
 	static String response;
 	
+//	list all available chatbots under this class
+	static Chatbot school;
+	
 	public static void main(String[] args) {
 //		demonstrateStringMethods();
 		createFields();
@@ -33,24 +36,75 @@ public class FriedmanMain {
 		return userInput;
 	}
 
-	private static void promptInputForever(String prompt) {
+	public static void promptInputForever(String prompt) {
 		inMainLoop = true;
 		while(inMainLoop){
 			prompt = "Hi, " + user + "! How are you?";
 			response = promptInput(prompt);
-			if((response.indexOf("Good") >= 0 || response.indexOf("good") >= 0) && (response.indexOf("Not good") < 0 && response.indexOf("not good") < 0)){
+			if(findKeyword(response, "good", 0) >= 0){
 //				println("true");
 				println("That's wonderful! I'm glad you feel good.");
 			}
+			
+			//response to liking school
+			else if (response.indexOf("School") >= 0 || response.indexOf("school") >= 0){
+//				println("true");
+				println("School is great! Tell me about school!");
+//				exit loop
+				inMainLoop = false;
+//				go to school's talk method
+				school.talk();
+			}
+			
 			else{
 				println("I don't understand.");
 			}
 		}
 	}
 	
+	public static int findKeyword(String searchString, String keyword, int startPos) {
+		
+		searchString = searchString.trim();//delete white space
+		searchString = searchString.toLowerCase();
+		
+		keyword = keyword.toLowerCase();
+		
+//		find first position of keyword
+		int pos = searchString.indexOf(0);
+		
+//		keep searching until context keyword found
+		while(pos >= 0){
+//			Assume preceded and followed by space
+			String before = " ";
+			String after = " ";
+			
+//			check character in front, if it exists
+			if(pos > 0){
+				before = searchString.substring(pos-1, pos);
+			}
+			
+//			check if there is a character after the keyword
+			if(pos + keyword.length() < searchString.length()){
+				after = searchString.substring((pos + keyword.length()),(pos + keyword.length() + 1));
+			}
+			
+			if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+				return pos;
+			}
+			else{
+//				pos + 1 is one space after our current position, so this finds the NEXT word
+				pos = searchString.indexOf(keyword, (pos + 1));
+			}
+			
+		}
+		
+		return -1;
+	}
+
 	public static void createFields() {
 		input = new Scanner(System.in);
 		user = "";
+		school = new FriedmanSchool();
 	}
 
 	public static void demonstrateStringMethods(){
