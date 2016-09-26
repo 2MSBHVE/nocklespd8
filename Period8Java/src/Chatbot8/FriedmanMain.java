@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class FriedmanMain {
 	
-	static Scanner input;
 	static String user;
+	static Scanner input;
+	static boolean inMainLoop;
 	static String response;
 	
 	public static void main(String[] args) {
@@ -26,15 +27,24 @@ public class FriedmanMain {
 		
 	}
 
-	public static void promptInput(String prompt) {
+	public static String promptInput(String prompt) {
 		println(prompt);
 		String userInput = input.nextLine();
-		println("Congratulations! You typed: " + userInput);
+		return userInput;
 	}
 
 	private static void promptInputForever(String prompt) {
-		while(true){
-			promptInput(prompt);
+		inMainLoop = true;
+		while(inMainLoop){
+			prompt = "Hi, " + user + "! How are you?";
+			response = promptInput(prompt);
+			if((response.indexOf("Good") >= 0 || response.indexOf("good") >= 0) && (response.indexOf("Not good") < 0 && response.indexOf("not good") < 0)){
+//				println("true");
+				println("That's wonderful! I'm glad you feel good.");
+			}
+			else{
+				println("I don't understand.");
+			}
 		}
 	}
 	
