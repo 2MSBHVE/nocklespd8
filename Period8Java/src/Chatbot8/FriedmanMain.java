@@ -70,7 +70,7 @@ public class FriedmanMain {
 		keyword = keyword.toLowerCase();
 		
 //		find first position of keyword
-		int pos = searchString.indexOf(0);
+		int pos = searchString.indexOf(keyword);
 		
 //		keep searching until context keyword found
 		while(pos >= 0){
@@ -81,24 +81,61 @@ public class FriedmanMain {
 //			check character in front, if it exists
 			if(pos > 0){
 				before = searchString.substring(pos-1, pos);
+				System.out.println("The character before us is " + before);
 			}
 			
 //			check if there is a character after the keyword
 			if(pos + keyword.length() < searchString.length()){
 				after = searchString.substring((pos + keyword.length()),(pos + keyword.length() + 1));
+				System.out.println("The character after us is " + after);
 			}
 			
-			if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+			if(before.compareTo("a") < 0 && after.compareTo("a") < 0 && noNegotiations(searchString, pos)){
+				System.out.println("Found " + keyword + " at " + pos);
 				return pos;
 			}
 			else{
 //				pos + 1 is one space after our current position, so this finds the NEXT word
 				pos = searchString.indexOf(keyword, (pos + 1));
+				System.out.println("Did not find " + keyword + ", checking position " + pos);
 			}
 			
 		}
 		
 		return -1;
+	}
+
+	/**
+	 * This is a helper method.
+	 * A helper method is a method designed for "helping" a larger method.
+	 * Because of this, helper methods are generally private
+	 * because they are only used by the methods they are helping.
+	 * Also, Nockles expects helper methods in projects
+	 * because they also make code more READABLE.
+	 * @param searchString
+	 * @param pos
+	 * @return "true" if there is no negation words in front of position
+	 */
+	private static boolean noNegotiations(String searchString, int pos) {
+//		check to see if the word "no " is in front of pos
+//		check to see if there are three spaces in front
+//		then check to see if "no " is there
+		
+//		this if statement works because Java checks conditions with && sequentially
+		if (pos - 3 >= 0 && searchString.substring(pos - 3, pos).equals("no ")){
+			return false;
+		}
+		if (pos - 4 >= 0 && searchString.substring(pos - 4, pos).equals("not ")) {
+			return false;
+		}
+		if (pos - 6 >= 0 && searchString.substring(pos - 6, pos).equals("never ")) {
+			return false;
+		}
+		if (pos - 4 >= 0 && searchString.substring(pos - 4, pos).equals("n't ")) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	public static void createFields() {
