@@ -11,6 +11,7 @@ public class FriedmanMain {
 	
 //	list all available chatbots under this class
 	static Chatbot school;
+	static Chatbot hello;
 	
 	public static void main(String[] args) {
 //		demonstrateStringMethods();
@@ -142,6 +143,7 @@ public class FriedmanMain {
 		input = new Scanner(System.in);
 		user = "";
 		school = new FriedmanSchool();
+		hello = new FriedmanHello();
 	}
 
 	public static void demonstrateStringMethods(){

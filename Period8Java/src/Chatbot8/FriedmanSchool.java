@@ -5,7 +5,7 @@ public class FriedmanSchool implements Chatbot {
 	private boolean inSchoolLoop;
 	private String schoolResponse;
 	
-	@Override
+
 	public void talk() {
 		inSchoolLoop = true;
 		while(inSchoolLoop){
@@ -18,6 +18,16 @@ public class FriedmanSchool implements Chatbot {
 			FriedmanMain.println("That's my favorite part about school!");
 		}
 		
+	}
+
+	public boolean isTriggered(String userInput) {
+//		String[] triggers = {"school", "class", "teacher"};
+//		for(int i = 0; ){}
+		
+		if(FriedmanMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		return false;
 	}
 
 }
