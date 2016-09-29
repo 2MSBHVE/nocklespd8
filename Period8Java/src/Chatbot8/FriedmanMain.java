@@ -42,13 +42,13 @@ public class FriedmanMain {
 		while(inMainLoop){
 			prompt = "Hi, " + user + "! How are you?";
 			response = promptInput(prompt);
-			if(findKeyword(response, "good", 0) >= 0){
-//				println("true");
-				println("That's wonderful! I'm glad you feel good.");
-			}
+//			if(findKeyword(response, "good", 0) >= 0){
+////				println("true");
+//				println("That's wonderful! I'm glad you feel good.");
+//			}
 			
 			//response to liking school
-			else if (response.indexOf("School") >= 0 || response.indexOf("school") >= 0){
+			if (response.indexOf("School") >= 0 || response.indexOf("school") >= 0){
 //				println("true");
 				println("School is great! Tell me about school!");
 //				exit loop
