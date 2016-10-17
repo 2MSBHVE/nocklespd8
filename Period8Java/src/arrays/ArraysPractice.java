@@ -3,6 +3,42 @@ package arrays;
 public class ArraysPractice {
 
 	public static void main(String[] args) {
+//		how do you time a process
+		long startTime = System.currentTimeMillis();
+		
+		SampleElement sample = new SampleElement(10);
+		sample.increase();
+		System.out.println("The sample element has a number equal to " + sample.getNumber());
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("Completed method in " + (endTime - startTime) + " milliseconds");
+		
+		String[] someStrings = new String[1000];
+		standardPopulate(someStrings);
+		String s = someStrings[999];
+		
+		printArray(someStrings);
+
+	}
+	
+	private static void standardPopulate(String[] a) {
+		//this loop instantiating the strings
+		for (int index = 0; index < a.length; index++) {
+			a[index] = "String #" + (index + 1);
+		}
+	}
+
+	private static void printArray(String[] a) {
+		//this loop prints the strings
+//		for(String s: a){
+//			System.out.println(s);
+//		}
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a[i]);
+		}
+	}
+	
+	public static void initializingArraysExample(){
 //		2 diff ways to initiate an array
 		boolean[] boos1 = new boolean[3];
 //		this can only be done at the declaration
@@ -41,6 +77,6 @@ public class ArraysPractice {
 			System.out.println(s);
 		}
 		
-	}
 
+	}
 }
