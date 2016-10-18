@@ -1,5 +1,7 @@
 package arrays;
 
+import java.util.Arrays;
+
 public class ArrayMethods {
 
     public static void main(String[] args) {
@@ -12,8 +14,30 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[] ints = {4,3,34,1};
-    	System.out.println(isSorted(ints));
+    	
+    	
+//    	int[] ints = {4,3,34,1};
+//    	System.out.println(isSorted(ints));
+    	
+    	
+//		int[] sortedInts = new int[100];
+//		for (int i = sortedInts.length - 1; i >= 0; i--) {
+//			sortedInts[(sortedInts.length - 1) - i] = i;
+//		}
+		
+//		for (int i = 0; i < sortedInts.length; i++) {
+//			System.out.println(sortedInts[i]);
+//		}
+		
+    	int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    	int toSearch = 25;
+		long startTime = System.currentTimeMillis();
+//    	System.out.println(searchSorted(sortedInts, 427));
+		System.out.println(Arrays.binarySearch(sortedInts, 49));
+//		System.out.println(sortedInts.length);
+
+    	long endTime = System.currentTimeMillis();
+    	System.out.println("Completed method in " + (endTime - startTime) + " milliseconds");
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -34,23 +58,50 @@ public class ArrayMethods {
      * Note: You should attempt to write a method that is more efficient that searchUnsorted
      * */
     	int length = sortedArrayToSearch.length;
+    	int halflength = (int)(Math.round((double)(length)/2));
+//    	System.out.println(halflength);
+    	
+    	System.out.println(sortedArrayToSearch[halflength]);
     	
     	if (sortedArrayToSearch[0] < key){
     		return -1;
     	}
-    	if (sortedArrayToSearch[length - 1] > key){
+    	else if (sortedArrayToSearch[length - 1] > key){
     		return -1;
     	}
     	else {
 //    		TOO BAD I DON'T KNOW JAVA RECURSION YET!!! WOULD HAVE DONE BINARY SEARCH!
-    		for (int i = 0; i < (sortedArrayToSearch.length - 1); i++) {
-    			if(sortedArrayToSearch[i] < sortedArrayToSearch [i+1]){
-    				return -1;
-    			}	
+//    		for (int i = 0; i < sortedArrayToSearch.length; i++) {
+//    			if(sortedArrayToSearch[i] == key){
+//    				return i;
+//    			}	
+//    		}
+//    		System.out.println(sortedArrayToSearch[halflength]);
+    		if (sortedArrayToSearch[halflength-1] == key) {
+    			return 1;
+    		}
+    		else if (sortedArrayToSearch[halflength-1] < key) {
+    			int[] subarray = new int[halflength];
+//    			System.out.print(subarray);
+    			for(int n = 0; n < halflength; n++){
+    				subarray[n] = sortedArrayToSearch[n];
+    			}
+    			return searchSorted(subarray, key);
+    		}
+    		else if (sortedArrayToSearch[halflength-1] > key) {
+    			int[] subarray = new int[halflength];
+//    			System.out.print(subarray);
+    			for(int n = halflength + 1; n < length; n++){
+    				subarray[(int)(n - halflength) - 1] = sortedArrayToSearch[n];
+    			}
+    			return (halflength + 1) + searchSorted(subarray, key);
+    		}
+    		else {
+    			return -123;
     		}
     	}
+//    	return -1;
     	
-     return -1;
     }
     
     public static boolean isSorted(int[] array){
@@ -61,7 +112,7 @@ public class ArrayMethods {
     	for (int i = 0; i < (array.length - 1); i++) {
 			if(array[i] < array [i+1]){
 				return false;
-			}	
+			}
 		}
     	
         return true;
