@@ -216,21 +216,21 @@ public class ArrayMethods {
 		 * contains only entries between 1 and 2n (inclusive) and has no duplicates
 		 * 
 		 * */
-		int[] outArray = new int[n];
-		for (int i = 0; i < outArray.length; i++) {
-			
-			boolean contains = true;
-			while(contains == true){
-				int newInt = (int) (2*n*Math.random()) + 1;
-				for (int n: outArray) {
-					if(n == newInt){
-						break;
-					}
-				}
-			}
-			new
-		}
-		return outArray;
+//		int[] outArray = new int[n];
+//		for (int i = 0; i < outArray.length; i++) {
+//			
+//			boolean contains = true;
+//			while(contains == true){
+//				int newInt = (int) (2*n*Math.random()) + 1;
+//				for (int n: outArray) {
+//					if(n == newInt){
+//						break;
+//					}
+//				}
+//			}
+//			new
+//		}
+		return false;
 		
 	}
 
