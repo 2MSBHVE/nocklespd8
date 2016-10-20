@@ -20,19 +20,19 @@ public class ArrayMethods {
 		//    	System.out.println(isSorted(ints));
 
 
-		int[] forSortedInts = new int[12000000];
-		for (int i = forSortedInts.length - 1; i >= 0; i--) {
-			forSortedInts[(forSortedInts.length - 1) - i] = i;
-		}
+//		int[] forSortedInts = new int[12000000];
+//		for (int i = forSortedInts.length - 1; i >= 0; i--) {
+//			forSortedInts[(forSortedInts.length - 1) - i] = i;
+//		}
+//
+//		for (int i = 0; i < forSortedInts.length; i++) {
+//			//			System.out.println(forSortedInts[i]);
+//		}
 
-		for (int i = 0; i < forSortedInts.length; i++) {
-			//			System.out.println(forSortedInts[i]);
-		}
 
+//		int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-		int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-		int a;
+//		int a;
 
 		//    	long startTime0 = System.currentTimeMillis();
 		//    	
@@ -47,24 +47,43 @@ public class ArrayMethods {
 
 		//    	reverseOrder(forSortedInts);
 
-		long startTime;
-		long endTime;
-		for(int t = 0; t < 1000; t++){
-			startTime = System.currentTimeMillis();
-			for (int i = 1; i <= 12000000; i++) {
-				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
-				a = searchSorted(forSortedInts, i);
-			}
-			endTime = System.currentTimeMillis();
-			System.out.println(t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
-		}
+//		long startTime;
+//		long endTime;
+//		for(int t = 0; t < 1000; t++){
+//			startTime = System.currentTimeMillis();
+//			for (int i = 1; i <= 12000000; i++) {
+//				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
+//				a = searchSorted(forSortedInts, i);
+//			}
+//			endTime = System.currentTimeMillis();
+//			System.out.println(t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
+//		
+//		}
 
+	printArrayLinear(generateDistinctItemsList(30));
 
 
 
 
 
 	}
+	
+	public static void printArray(int[] array){
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+	}
+	
+	public static void printArrayLinear(int[] array){
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]);
+			if(i != (array.length - 1)){
+				System.out.print(", ");
+			}
+		}
+		System.out.print("\n");
+	}
+	
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
 		/**
@@ -208,7 +227,7 @@ public class ArrayMethods {
 		return 0;
 	}
 
-	public static boolean generateDistinctItemsList(int n){
+	public static int[] generateDistinctItemsList(int n){
 		/**
 		 * This method needs to generate an int[] of length n that contains distinct, random integers
 		 * between 1 and 2n 
@@ -216,21 +235,21 @@ public class ArrayMethods {
 		 * contains only entries between 1 and 2n (inclusive) and has no duplicates
 		 * 
 		 * */
-//		int[] outArray = new int[n];
-//		for (int i = 0; i < outArray.length; i++) {
-//			
-//			boolean contains = true;
-//			while(contains == true){
-//				int newInt = (int) (2*n*Math.random()) + 1;
-//				for (int n: outArray) {
-//					if(n == newInt){
-//						break;
-//					}
-//				}
-//			}
-//			new
-//		}
-		return false;
+		int[] outArray = new int[n];
+		for (int i = 0; i < outArray.length; i++) {
+			
+			int newInt = -1;
+			boolean contains = true;
+			while(contains == true){
+				printArrayLinear(outArray);
+				newInt = (int) ((2*n)*Math.random()) + 1;
+				if(searchUnsorted(outArray, newInt) < 0){
+					outArray[i] = newInt;
+					contains = false;
+				}
+			}
+		}
+		return outArray;
 		
 	}
 
