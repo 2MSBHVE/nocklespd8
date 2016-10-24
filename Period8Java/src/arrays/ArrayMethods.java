@@ -1,7 +1,5 @@
 package arrays;
 
-import java.util.stream.IntStream;
-
 public class ArrayMethods {
 
 	public static void main(String[] args) {
@@ -61,6 +59,21 @@ public class ArrayMethods {
 //		}
 
 	printArrayLinear(generateDistinctItemsList(30));
+	
+	double[] doubles = {3,7,4,2,8,6,2,9};
+	
+	printArrayLinear(getStats(doubles));
+	
+	int[] toCycle = {3,7,4,2,8,6,2,9};
+//	printArrayLinear(toCycle);
+	System.out.println("-");
+	cycleThrough(toCycle, 0) ;
+	
+//	printArrayLinear(toCycle);
+	
+	int[] arr1 = {4,4,4,4};
+	int[] arr2 = {1,2,3,4}; 
+	System.out.println(countDifferences(arr1, arr2));
 
 
 
@@ -68,6 +81,17 @@ public class ArrayMethods {
 
 	}
 	
+	private static void printArrayLinear(double[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]);
+			if(i != (array.length - 1)){
+				System.out.print(", ");
+			}
+		}
+		System.out.print("\n");
+		
+	}
+
 	public static void printArray(int[] array){
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
@@ -159,6 +183,76 @@ public class ArrayMethods {
 		 * index 5 = the number of values below the mean
 		 * */
 		double[] stats = new double[6];
+		
+		for (int i = 0; i < array.length; i++) {
+			stats[0] = stats[0] + array[i];
+		}
+		stats[0] = (stats[0] / array.length);
+		
+		stats[1] = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if(array[i] > stats[1]){
+				stats[1] = array[i];
+			}
+		}
+		
+		stats[2] = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if(array[i] < stats[2]){
+				stats[2] = array[i];
+			}
+		}
+		
+		for (int i = 0; i < array.length; i++) {
+			if(array[i] >= stats[0]) {
+				stats[4]++;
+			}
+		}
+		
+		for (int i = 0; i < array.length; i++) {
+			if(array[i] < stats[0]) {
+				stats[5]++;
+			}
+		}
+		
+		
+		//SORT LIST FOR MEDIAN
+		
+		double[] arrayCopy = array;
+		double[] sorted = arrayCopy;
+		double min = arrayCopy[0];
+		int pos = 0;
+		for(int i = 0; i < arrayCopy.length; i++){
+			for (int j = 0; i < arrayCopy.length; i++) {
+				if(array[j] <= min){
+					min = arrayCopy[j];
+					sorted[j] = min;
+					pos = j;
+				}
+				sorted[pos] = stats[1];
+			}
+			for (int j = i; j < arrayCopy.length; j++) {
+				sorted[j] = min;
+			}
+		}
+		
+		
+		double tempLengthVar = (double)(sorted.length);
+		
+		if ((tempLengthVar / 2) == (sorted.length / 2)){
+			stats[3] = sorted[sorted.length/2];
+		}
+		else {
+			stats[3] = ((sorted[sorted.length / 2] + sorted[(sorted.length / 2) + 1]) / 2);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		return stats;
 	}
 
@@ -176,11 +270,21 @@ public class ArrayMethods {
 		 * 
 		 * */
 
-		int[] arrayIn = array;
-
-		for (int i = 0; i < array.length; i++) {
-			array[(array.length - 1) - i] = arrayIn[i];
+		int length = array.length;
+		int[] arrayIn = new int[length];
+		
+		for (int i = 0; i < length; i++){
+		    arrayIn[i] = array[i];
 		}
+		
+		int[] arrayOut = new int[length];
+
+		for (int i = 0; i < length; i++) {
+			array[i] = arrayIn[(length - 1) - i];
+		}
+		
+// 		array = arrayOut;
+		
 	}
 
 	public static int countDifferences(int[] array1, int[] array2){
@@ -194,7 +298,25 @@ public class ArrayMethods {
 		 * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
 		 * 
 		 * */
-		return 0;
+		
+		if(array1.length == array2.length){
+				
+			int length = array1.length;
+			int num = 0;
+			
+			for (int i = 0; i < length; i++) {
+				if(array1[i] != array2[i]) {
+					num++;
+				}
+			}
+			
+			return num;
+		}
+		else{
+			System.out.println("Arrays are not the same length.");
+			return 0;
+		}
+		
 	}
 
 
@@ -241,7 +363,7 @@ public class ArrayMethods {
 			int newInt = -1;
 			boolean contains = true;
 			while(contains == true){
-				printArrayLinear(outArray);
+//				printArrayLinear(outArray);
 				newInt = (int) ((2*n)*Math.random()) + 1;
 				if(searchUnsorted(outArray, newInt) < 0){
 					outArray[i] = newInt;
@@ -277,8 +399,37 @@ public class ArrayMethods {
 		 * CHALLENGE
 		 * For extra credit, make your method handle NEGATIVE n
 		 * */
+		
+		
+		if (n > 0) {
+//			int[] newArray = new int[array.length];
+			for (int i = 0; i < n; i++) {
+				int temp = array[array.length - 1];
+				array[array.length - 1] = array[0];
+//				newArray = array;
+				for (int j = 0; j < array.length - 2; j++) {
+					array[j] = array[j + 1];
+//					printArrayLinear(array);
+				}
+				array[array.length - 2] = temp;
+			}
+//			array = newArray;
+		}
+		else if (n < 0) {
+//			int[] newArray = new int[array.length];
+			for (int i = -1; i > n; i--) {
+				int temp = array[0];
+				array [0] = array[array.length - 1];
+//				newArray = array;
+				for (int j = array.length - 1; j > 0; j--) {
+					array[j] = array[j - 1];
+//					printArrayLinear(array);
+				}
+				array[1] = temp;
+			}
+		}
+		
 	}
 
 
 }
-
