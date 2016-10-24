@@ -88,9 +88,11 @@ public class ArrayMethods {
 //		
 //		}
 
-	printArrayLinear(generateDistinctItemsList(30));
+//	printArrayLinear(generateDistinctItemsList(30));
 	double[] arr = {8.0, 3.0, 20.0, 27.0, 18.0, 35.0, 19.0, 13.0, 38.0, 11.0, 10.0, 47.0, 1.0, 39.0, 52.0, 41.0, 28.0, 59.0, 37.0, 9.0, 48.0, 43.0, 33.0, 46.0, 22.0, 24.0, 36.0, 32.0, 23.0, 45.0};
 	printArrayLinear(getStats(arr));
+		
+//		printArrayLinear(sortArrayAsc(arr));
 //	
 //	double[] doubles = {3,7,4,2,8,6,2,9};
 //	
@@ -270,35 +272,22 @@ public class ArrayMethods {
 		
 		//SORT LIST FOR MEDIAN
 		
-		double[] arrayCopy = array;
-		double[] sorted = arrayCopy;
-		double min = arrayCopy[0];
-		int pos = 0;
-		for(int i = 0; i < arrayCopy.length; i++){
-			for (int j = 0; i < arrayCopy.length; i++) {
-				if(array[j] <= min){
-					min = arrayCopy[j];
-					sorted[j] = min;
-					pos = j;
-				}
-				sorted[pos] = stats[1];
-			}
-			for (int j = i; j < arrayCopy.length; j++) {
-				sorted[j] = min;
-			}
-		}
+//		double[] arrayCopy = new double[array.length];
 		
-		printArrayLinear(sorted);
+		
+		
+		double[] sorted = sortArrayAsc(array);
+		
+		
+//		printArrayLinear(sorted);
 		
 		double tempLengthVar = (double)(sorted.length);
 		System.out.println(tempLengthVar);
+		System.out.println(sorted.length);
+		System.out.println((tempLengthVar / 2) == (sorted.length / 2));
 		
 		if ((tempLengthVar / 2) == (sorted.length / 2)){
-			stats[3] = sorted[(sorted.length)/2 - 1];
-			System.out.println((sorted.length)/2 - 1);
-		}
-		else {
-			stats[3] = ((sorted[sorted.length / 2] + sorted[(sorted.length / 2) - 1]) / 2);
+			stats[3] = (sorted[(sorted.length / 2) - 1] + sorted[(sorted.length / 2)]) / 2;
 		}
 		
 		
@@ -309,6 +298,43 @@ public class ArrayMethods {
 		
 		
 		return stats;
+	}
+	
+	public static double[] sortArrayAsc(double[] array) {
+		int length = array.length;
+		double[] arrayIn = new double[length];
+		
+		for (int i = 0; i < length; i++) {
+			arrayIn[i] = array[i];
+		}
+		
+		double[] sorted = new double[length];
+		
+		double max = array[0];
+		for (int i = 1; i < length; i++) {
+			if(array[i] > max){
+				max = array[i];
+			}
+		}
+//		System.out.println("Max " + max);
+		
+		for (int i = 0; i < length; i++) {
+			double min = arrayIn[0];
+			int pos = 0;
+			for (int j = 0; j < length; j++) {
+				if(arrayIn[j] < min){
+					min = arrayIn[j];
+					pos = j;
+				}
+			}
+			sorted[i] = min;
+			arrayIn[pos] = max;
+//			printArrayLinear(sorted);
+//			printArrayLinear(arrayIn);
+		}
+		
+		return sorted;
+		
 	}
 
 	public static void reverseOrder(int[] array){
