@@ -1,7 +1,5 @@
 package arrays;
 
-import java.util.stream.IntStream;
-
 public class ArrayMethods {
 
 	public static void main(String[] args) {
@@ -20,19 +18,19 @@ public class ArrayMethods {
 		//    	System.out.println(isSorted(ints));
 
 
-		int[] forSortedInts = new int[12000000];
-		for (int i = forSortedInts.length - 1; i >= 0; i--) {
-			forSortedInts[(forSortedInts.length - 1) - i] = i;
-		}
+//		int[] forSortedInts = new int[12000000];
+//		for (int i = forSortedInts.length - 1; i >= 0; i--) {
+//			forSortedInts[(forSortedInts.length - 1) - i] = i;
+//		}
+//
+//		for (int i = 0; i < forSortedInts.length; i++) {
+//			//			System.out.println(forSortedInts[i]);
+//		}
 
-		for (int i = 0; i < forSortedInts.length; i++) {
-			//			System.out.println(forSortedInts[i]);
-		}
 
+//		int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-		int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-		int a;
+//		int a;
 
 		//    	long startTime0 = System.currentTimeMillis();
 		//    	
@@ -47,24 +45,69 @@ public class ArrayMethods {
 
 		//    	reverseOrder(forSortedInts);
 
-		long startTime;
-		long endTime;
-		for(int t = 0; t < 1000; t++){
-			startTime = System.currentTimeMillis();
-			for (int i = 1; i <= 12000000; i++) {
-				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
-				a = searchSorted(forSortedInts, i);
-			}
-			endTime = System.currentTimeMillis();
-			System.out.println(t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
-		}
+//		long startTime;
+//		long endTime;
+//		for(int t = 0; t < 1000; t++){
+//			startTime = System.currentTimeMillis();
+//			for (int i = 1; i <= 12000000; i++) {
+//				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
+//				a = searchSorted(forSortedInts, i);
+//			}
+//			endTime = System.currentTimeMillis();
+//			System.out.println(t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
+//		
+//		}
 
+	printArrayLinear(generateDistinctItemsList(30));
+	
+	double[] doubles = {3,7,4,2,8,6,2,9};
+	
+	printArrayLinear(getStats(doubles));
+	
+	int[] toCycle = {3,7,4,2,8,6,2,9};
+//	printArrayLinear(toCycle);
+	System.out.println("-");
+	cycleThrough(toCycle, 0) ;
+	
+//	printArrayLinear(toCycle);
+	
+	int[] arr1 = {4,4,4,4};
+	int[] arr2 = {1,2,3,4}; 
+	System.out.println(countDifferences(arr1, arr2));
 
 
 
 
 
 	}
+	
+	private static void printArrayLinear(double[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]);
+			if(i != (array.length - 1)){
+				System.out.print(", ");
+			}
+		}
+		System.out.print("\n");
+		
+	}
+
+	public static void printArray(int[] array){
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+	}
+	
+	public static void printArrayLinear(int[] array){
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]);
+			if(i != (array.length - 1)){
+				System.out.print(", ");
+			}
+		}
+		System.out.print("\n");
+	}
+	
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
 		/**
@@ -140,6 +183,76 @@ public class ArrayMethods {
 		 * index 5 = the number of values below the mean
 		 * */
 		double[] stats = new double[6];
+		
+		for (int i = 0; i < array.length; i++) {
+			stats[0] = stats[0] + array[i];
+		}
+		stats[0] = (stats[0] / array.length);
+		
+		stats[1] = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if(array[i] > stats[1]){
+				stats[1] = array[i];
+			}
+		}
+		
+		stats[2] = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if(array[i] < stats[2]){
+				stats[2] = array[i];
+			}
+		}
+		
+		for (int i = 0; i < array.length; i++) {
+			if(array[i] >= stats[0]) {
+				stats[4]++;
+			}
+		}
+		
+		for (int i = 0; i < array.length; i++) {
+			if(array[i] < stats[0]) {
+				stats[5]++;
+			}
+		}
+		
+		
+		//SORT LIST FOR MEDIAN
+		
+		double[] arrayCopy = array;
+		double[] sorted = arrayCopy;
+		double min = arrayCopy[0];
+		int pos = 0;
+		for(int i = 0; i < arrayCopy.length; i++){
+			for (int j = 0; i < arrayCopy.length; i++) {
+				if(array[j] <= min){
+					min = arrayCopy[j];
+					sorted[j] = min;
+					pos = j;
+				}
+				sorted[pos] = stats[1];
+			}
+			for (int j = i; j < arrayCopy.length; j++) {
+				sorted[j] = min;
+			}
+		}
+		
+		
+		double tempLengthVar = (double)(sorted.length);
+		
+		if ((tempLengthVar / 2) == (sorted.length / 2)){
+			stats[3] = sorted[sorted.length/2];
+		}
+		else {
+			stats[3] = ((sorted[sorted.length / 2] + sorted[(sorted.length / 2) + 1]) / 2);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		return stats;
 	}
 
@@ -157,11 +270,21 @@ public class ArrayMethods {
 		 * 
 		 * */
 
-		int[] arrayIn = array;
-
-		for (int i = 0; i < array.length; i++) {
-			array[(array.length - 1) - i] = arrayIn[i];
+		int length = array.length;
+		int[] arrayIn = new int[length];
+		
+		for (int i = 0; i < length; i++){
+		    arrayIn[i] = array[i];
 		}
+		
+		int[] arrayOut = new int[length];
+
+		for (int i = 0; i < length; i++) {
+			array[i] = arrayIn[(length - 1) - i];
+		}
+		
+// 		array = arrayOut;
+		
 	}
 
 	public static int countDifferences(int[] array1, int[] array2){
@@ -175,7 +298,25 @@ public class ArrayMethods {
 		 * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
 		 * 
 		 * */
-		return 0;
+		
+		if(array1.length == array2.length){
+				
+			int length = array1.length;
+			int num = 0;
+			
+			for (int i = 0; i < length; i++) {
+				if(array1[i] != array2[i]) {
+					num++;
+				}
+			}
+			
+			return num;
+		}
+		else{
+			System.out.println("Arrays are not the same length.");
+			return 0;
+		}
+		
 	}
 
 
@@ -208,7 +349,7 @@ public class ArrayMethods {
 		return 0;
 	}
 
-	public static boolean generateDistinctItemsList(int n){
+	public static int[] generateDistinctItemsList(int n){
 		/**
 		 * This method needs to generate an int[] of length n that contains distinct, random integers
 		 * between 1 and 2n 
@@ -219,16 +360,16 @@ public class ArrayMethods {
 		int[] outArray = new int[n];
 		for (int i = 0; i < outArray.length; i++) {
 			
+			int newInt = -1;
 			boolean contains = true;
 			while(contains == true){
-				int newInt = (int) (2*n*Math.random()) + 1;
-				for (int n: outArray) {
-					if(n == newInt){
-						break;
-					}
+//				printArrayLinear(outArray);
+				newInt = (int) ((2*n)*Math.random()) + 1;
+				if(searchUnsorted(outArray, newInt) < 0){
+					outArray[i] = newInt;
+					contains = false;
 				}
 			}
-			new
 		}
 		return outArray;
 		
@@ -258,6 +399,36 @@ public class ArrayMethods {
 		 * CHALLENGE
 		 * For extra credit, make your method handle NEGATIVE n
 		 * */
+		
+		
+		if (n > 0) {
+//			int[] newArray = new int[array.length];
+			for (int i = 0; i < n; i++) {
+				int temp = array[array.length - 1];
+				array[array.length - 1] = array[0];
+//				newArray = array;
+				for (int j = 0; j < array.length - 2; j++) {
+					array[j] = array[j + 1];
+//					printArrayLinear(array);
+				}
+				array[array.length - 2] = temp;
+			}
+//			array = newArray;
+		}
+		else if (n < 0) {
+//			int[] newArray = new int[array.length];
+			for (int i = -1; i > n; i--) {
+				int temp = array[0];
+				array [0] = array[array.length - 1];
+//				newArray = array;
+				for (int j = array.length - 1; j > 0; j--) {
+					array[j] = array[j - 1];
+//					printArrayLinear(array);
+				}
+				array[1] = temp;
+			}
+		}
+		
 	}
 
 
