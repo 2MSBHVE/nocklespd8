@@ -35,8 +35,56 @@ public class AdvancedArrayMethods {
 		}
 	}
 
-}
 
+	public static int longestSequence(int[] array1, int[] array2) {
+		int max = 0;
+		int count = 0;
+		
+		for (int seqStart = 0; seqStart < array1.length; seqStart++) {
+			int seqEnd = seqStart;
+			int[] sequence = subArray(seqStart, seqEnd, array1);
+			if(checkSequence(sequence, array2)){
+				count++;
+				if(count > max){
+					max = count;
+				}
+			}
+			
+//			reset count after every sequence has been checked
+			count = 0;
+		}
+		
+		return max;
+	}
+
+//	returns true if sequence found in array2
+	private static boolean checkSequence(int[] sequence, int[] array2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static int[] subArray(int seqStart, int seqEnd, int[] array1) {
+		int length = array1.length;
+		int[] outArray = new int[length];
+		
+		if(seqEnd >= array1.length){
+			System.out.println("doesnt contain that many nums");
+			return null;
+		}
+		else{
+			
+			int selectionLength = (seqEnd + 1) - seqStart;
+			
+			for (int i = 0; i < selectionLength; i++) {
+				outArray[i] = array1[seqStart + i];
+			}
+			
+			return outArray;
+		}
+	}
+	
+	
+}
 
 
 
