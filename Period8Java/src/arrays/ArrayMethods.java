@@ -18,13 +18,43 @@ public class ArrayMethods {
 		//    	System.out.println(isSorted(ints));
 
 
-//		int[] forSortedInts = new int[12000000];
+//		int[] forSortedInts = new int[199999999];
 //		for (int i = forSortedInts.length - 1; i >= 0; i--) {
 //			forSortedInts[(forSortedInts.length - 1) - i] = i;
 //		}
 //
+//		long startedTime;
+//		long endedTime;
+//		int x;
+//		for (int i = 0; i < 100; i++) {
+//			int newInt = (int) ((200999999)*Math.random()) + 5;
+////			int newInt = (int) ((5)*Math.random()) + 200999999;
+//			
+//			if((double)(i)/2 == i/2) {
+//				startedTime = System.currentTimeMillis();
+//				x = searchSorted(forSortedInts, newInt);
+//				endedTime = System.currentTimeMillis();
+//			}
+//			else{
+//				startedTime = System.currentTimeMillis();
+//				x = searchUnsorted(forSortedInts, newInt);
+//				endedTime = System.currentTimeMillis();
+//			}
+//			
+//			System.out.print((double)(i)/2 == i/2);
+//			if((double)(i)/2 == i/2) {
+//				System.out.print(" ");
+//			}
+//			System.out.print("     ");
+//			System.out.print(newInt);
+//			System.out.print("     ");
+//			System.out.print(x);
+//			System.out.print("     ");
+//			System.out.println("completed in " + (endedTime - startedTime));
+//		}
+
 //		for (int i = 0; i < forSortedInts.length; i++) {
-//			//			System.out.println(forSortedInts[i]);
+////						System.out.println(forSortedInts[i]);
 //		}
 
 
@@ -59,24 +89,36 @@ public class ArrayMethods {
 //		}
 
 	printArrayLinear(generateDistinctItemsList(30));
-	
-	double[] doubles = {3,7,4,2,8,6,2,9};
-	
-	printArrayLinear(getStats(doubles));
-	
-	int[] toCycle = {3,7,4,2,8,6,2,9};
-//	printArrayLinear(toCycle);
-	System.out.println("-");
-	cycleThrough(toCycle, 0) ;
-	
-//	printArrayLinear(toCycle);
-	
-	int[] arr1 = {4,4,4,4};
-	int[] arr2 = {1,2,3,4}; 
-	System.out.println(countDifferences(arr1, arr2));
+	double[] arr = {8.0, 3.0, 20.0, 27.0, 18.0, 35.0, 19.0, 13.0, 38.0, 11.0, 10.0, 47.0, 1.0, 39.0, 52.0, 41.0, 28.0, 59.0, 37.0, 9.0, 48.0, 43.0, 33.0, 46.0, 22.0, 24.0, 36.0, 32.0, 23.0, 45.0};
+	printArrayLinear(getStats(arr));
+//	
+//	double[] doubles = {3,7,4,2,8,6,2,9};
+//	
+//	printArrayLinear(getStats(doubles));
+//	
+//	int[] toCycle = {3,7,4,2,8,6,2,9};
+////	printArrayLinear(toCycle);
+//	System.out.println("-");
+//	cycleThrough(toCycle, 0) ;
+//	
+////	printArrayLinear(toCycle);
+//	
+//	int[] arr1 = {4,4,4,4};
+//	int[] arr2 = {1,2,3,4}; 
+//	System.out.println(countDifferences(arr1, arr2));
 
+//		int[] forSortedInts = {1000, 997, 992, 991, 990, 984, 980, 975, 969, 965, 962, 956, 955, 954, 951, 950, 945, 944, 941, 939, 936, 930, 929, 926, 921, 920, 914, 911, 907, 906, 904, 901, 900, 899, 893, 889, 883, 877, 873, 871, 868, 864, 858, 854, 852, 847, 842, 840, 836, 830, 825, 821, 817, 816, 815, 810, 809, 808, 805, 802, 801, 799, 793, 788, 783, 779, 773, 769, 764, 760, 755, 752, 750, 747, 742, 740, 739, 735, 734, 728, 724, 721, 716, 713, 710, 707, 701, 698, 693, 690, 688, 682, 680, 677, 675, 674, 673, 669, 664, 661, 660, 657, 653, 652, 647, 646, 642, 638, 635, 632, 630, 627, 622, 618, 613, 607, 601, 597, 596, 595, 591, 586, 582, 578, 572, 569, 567, 566, 564, 561, 556, 550, 546, 545, 541, 539, 533, 532, 528, 525, 520, 516, 511, 507, 506, 503, 500, 499, 495, 491, 489, 483, 480, 476, 475, 469, 463, 459, 457, 455, 454, 448, 445, 439, 433, 432, 427, 422, 420, 419, 413, 410, 409, 403, 401, 398, 394, 391, 386, 382, 379, 376, 374, 369, 365, 359, 356, 354, 348, 346, 341, 339, 337, 335, 334, 330, 326, 322, 318, 317, 315, 314, 312, 309, 304, 303, 299, 297, 295, 289, 286, 281, 275, 269, 267, 266, 261, 256, 255, 253, 252, 246, 245, 240, 238, 236, 234, 232, 231, 228, 222, 218, 214, 210, 207, 204, 202, 199, 198, 197, 196, 194, 190, 186, 182, 177, 171, 167, 161, 156, 150, 144, 139, 135, 132, 127, 123, 117, 113, 107, 106, 104, 100, 95, 94, 88, 84, 81, 75, 73, 68, 63, 62, 59, 54, 53, 48, 45, 44, 43, 37, 36, 35, 30, 24, 22, 20, 17, 12, 6, 3, 2};
 
+//		reverseOrder(temparr);
+		
+//		long startTime0 = System.currentTimeMillis();
+//		long endTime0 = System.currentTimeMillis();
 
+		
+		
+//		printArrayLinear(forSortedInts);		
+		
+		
 
 
 	}
@@ -136,24 +178,32 @@ public class ArrayMethods {
 
 		//    	Super giant arrays is where this really shines. Try it, Mr. Nockles!
 
-		key = -1 * key;
-
-		int low = 0;
-		int high = array.length - 1;
-
-		while (low >= high) {
-			int mid = (-1)*(low + high) >>> 1;
-		long midVal = -1 * array[mid];
-
-		if (midVal < key)
-			low = -1* (mid + 1);
-		else if (midVal > key)
-			high = -1 * (mid - 1);
-		else
-			return Math.abs(array.length - mid); // key found
+		int left = 0;
+		int right = array.length - 1;
+		
+//		if ((key > array[0]) || (array[array.length - 1] > key)) {
+//			return -1;
+//		}
+		
+		while (left <= right) {
+			
+			int mid = (left + right)/2;
+			int midVal = array[mid];
+			
+			if (midVal < key) {
+				right = mid - 1;
+			}
+			else if (midVal > key) {
+				left = mid + 1;
+			}
+			else {
+				return mid;
+			}
+			
 		}
-		return -1;  // key not found.
-
+		
+		return -1;
+		
 	}
 
 	public static boolean isSorted(int[] array){
@@ -203,12 +253,14 @@ public class ArrayMethods {
 			}
 		}
 		
+		stats[4] = 0;
 		for (int i = 0; i < array.length; i++) {
 			if(array[i] >= stats[0]) {
 				stats[4]++;
 			}
 		}
 		
+		stats[5] = 0;
 		for (int i = 0; i < array.length; i++) {
 			if(array[i] < stats[0]) {
 				stats[5]++;
@@ -236,14 +288,17 @@ public class ArrayMethods {
 			}
 		}
 		
+		printArrayLinear(sorted);
 		
 		double tempLengthVar = (double)(sorted.length);
+		System.out.println(tempLengthVar);
 		
 		if ((tempLengthVar / 2) == (sorted.length / 2)){
-			stats[3] = sorted[sorted.length/2];
+			stats[3] = sorted[(sorted.length)/2 - 1];
+			System.out.println((sorted.length)/2 - 1);
 		}
 		else {
-			stats[3] = ((sorted[sorted.length / 2] + sorted[(sorted.length / 2) + 1]) / 2);
+			stats[3] = ((sorted[sorted.length / 2] + sorted[(sorted.length / 2) - 1]) / 2);
 		}
 		
 		
