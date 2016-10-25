@@ -58,8 +58,23 @@ public class AdvancedArrayMethods {
 	}
 
 //	returns true if sequence found in array2
-	private static boolean checkSequence(int[] sequence, int[] array2) {
-		// TODO Auto-generated method stub
+	private static boolean checkSequence(int[] seq, int[] array) {
+		int length = array.length;
+//		int longest = 0;
+		A: for (int i = 0; i < length; i++) {
+			B: for (int j = 0; j < length; j++) {
+//				int seqLength = 0;
+				int[] subArr = subArray(i, j, array);
+				if(subArr[j] != subArr[j-1] + 1){
+//					breaks out of innermost for loop unless particular for loop is specified with a label
+					break;
+				}
+				else if (j == subArr.length - 1){
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 
