@@ -132,7 +132,6 @@ public class ArrayMethods {
 			}
 		}
 		System.out.print("\n");
-		
 	}
 
 	public static void printArray(int[] array){
