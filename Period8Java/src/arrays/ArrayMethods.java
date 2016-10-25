@@ -200,9 +200,7 @@ public class ArrayMethods {
 			else {
 				return mid;
 			}
-			
 		}
-		
 		return -1;
 		
 	}
@@ -271,12 +269,7 @@ public class ArrayMethods {
 		
 		//SORT LIST FOR MEDIAN
 		
-//		double[] arrayCopy = new double[array.length];
-		
-		
-		
 		double[] sorted = sortArrayAsc(array);
-		
 		
 //		printArrayLinear(sorted);
 		
@@ -288,13 +281,6 @@ public class ArrayMethods {
 		if ((tempLengthVar / 2) == (sorted.length / 2)){
 			stats[3] = (sorted[(sorted.length / 2) - 1] + sorted[(sorted.length / 2)]) / 2;
 		}
-		
-		
-		
-		
-		
-		
-		
 		
 		return stats;
 	}
@@ -451,8 +437,7 @@ public class ArrayMethods {
 				}
 			}
 		}
-		return outArray;
-		
+		return outArray;	
 	}
 
 
@@ -507,9 +492,6 @@ public class ArrayMethods {
 				}
 				array[1] = temp;
 			}
-		}
-		
+		}	
 	}
-
-
 }
