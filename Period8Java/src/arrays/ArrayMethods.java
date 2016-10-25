@@ -342,13 +342,9 @@ public class ArrayMethods {
 		    arrayIn[i] = array[i];
 		}
 		
-		int[] arrayOut = new int[length];
-
 		for (int i = 0; i < length; i++) {
 			array[i] = arrayIn[(length - 1) - i];
 		}
-		
-// 		array = arrayOut;
 		
 	}
 
