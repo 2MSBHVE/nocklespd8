@@ -13,7 +13,6 @@ public class ArrayMethods {
 		 * says that it isn't perfect!
 		 * */
 
-
 		//    	int[] ints = {4,3,34,1};
 		//    	System.out.println(isSorted(ints));
 
