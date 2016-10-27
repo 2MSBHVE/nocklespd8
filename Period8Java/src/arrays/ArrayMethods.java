@@ -23,10 +23,10 @@ public class ArrayMethods {
 		//    	System.out.println(isSorted(ints));
 
 
-//		int[] forSortedInts = new int[199999999];
-//		for (int i = forSortedInts.length - 1; i >= 0; i--) {
-//			forSortedInts[(forSortedInts.length - 1) - i] = i;
-//		}
+		int[] forSortedInts = new int[1999999];
+		for (int i = forSortedInts.length - 1; i >= 0; i--) {
+			forSortedInts[(forSortedInts.length - 1) - i] = i;
+		}
 //
 //		long startedTime;
 //		long endedTime;
@@ -65,7 +65,7 @@ public class ArrayMethods {
 
 //		int[] sortedInts = {100, 99, 98, 97, 96, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-//		int a;
+		int a;
 
 		//    	long startTime0 = System.currentTimeMillis();
 		//    	
@@ -80,18 +80,18 @@ public class ArrayMethods {
 
 		//    	reverseOrder(forSortedInts);
 
-//		long startTime;
-//		long endTime;
-//		for(int t = 0; t < 1000; t++){
-//			startTime = System.currentTimeMillis();
-//			for (int i = 1; i <= 12000000; i++) {
-//				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
-//				a = searchSorted(forSortedInts, i);
-//			}
-//			endTime = System.currentTimeMillis();
-//			System.out.println(t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
-//		
-//		}
+		long startTime;
+		long endTime;
+		for(int t = 0; t < 1000; t++){
+			for (int i = 1; i <= 1200; i++) {
+				startTime = System.nanoTime();
+				//			System.out.println((String)(i + " " + searchSorted(forSortedInts, i)));
+				a = searchSorted(forSortedInts, i*(t+1));
+				endTime = System.nanoTime();
+				System.out.println(i*t + ": Completed sorted method in " + (endTime - startTime) + " milliseconds");
+			}
+		
+		}
 
 //	printArrayLinear(generateDistinctItemsList(30));
 //	double[] arr = {8.0, 3.0, 20.0, 27.0, 18.0, 35.0, 19.0, 13.0, 38.0, 11.0, 10.0, 47.0, 1.0, 39.0, 52.0, 41.0, 28.0, 59.0, 37.0, 9.0, 48.0, 43.0, 33.0, 46.0, 22.0, 24.0, 36.0, 32.0, 23.0, 45.0};
