@@ -1,3 +1,9 @@
+/**
+ * Max Friedman
+ * Nockles AP Java Pd. 8 2016-2017
+ * Array Methods Homework
+ * */
+
 package arrays;
 
 public class ArrayMethods {
@@ -88,8 +94,8 @@ public class ArrayMethods {
 //		}
 
 //	printArrayLinear(generateDistinctItemsList(30));
-	double[] arr = {8.0, 3.0, 20.0, 27.0, 18.0, 35.0, 19.0, 13.0, 38.0, 11.0, 10.0, 47.0, 1.0, 39.0, 52.0, 41.0, 28.0, 59.0, 37.0, 9.0, 48.0, 43.0, 33.0, 46.0, 22.0, 24.0, 36.0, 32.0, 23.0, 45.0};
-	printArrayLinear(getStats(arr));
+//	double[] arr = {8.0, 3.0, 20.0, 27.0, 18.0, 35.0, 19.0, 13.0, 38.0, 11.0, 10.0, 47.0, 1.0, 39.0, 52.0, 41.0, 28.0, 59.0, 37.0, 9.0, 48.0, 43.0, 33.0, 46.0, 22.0, 24.0, 36.0, 32.0, 23.0, 45.0};
+//	printArrayLinear(getStats(arr));
 		
 //		printArrayLinear(sortArrayAsc(arr));
 //	
@@ -119,9 +125,25 @@ public class ArrayMethods {
 		
 //		printArrayLinear(forSortedInts);		
 		
+//		seqarr2 is 1 shorter than seqarr1
 		
+		int[] seqarr1 = {1000, 998, 993, 988, 984, 980,282,281, 280, 977, 972, 969, 966, 964, 958, 956, 952, 951, 945, 941, 938, 937, 936, 935, 932, 931, 926, 925, 922, 919, 917, 911, 907, 905, 900, 894, 893, 889, 887, 885, 879, 878, 876, 871, 866, 863, 858, 854, 850, 846, 842, 837, 835, 834, 832, 828, 827, 821, 816, 814, 812, 809, 806, 805, 804, 799, 795, 789, 787, 781, 778, 772, 768, 765, 764, 760, 758, 754, 752, 750, 749, 743, 741, 739, 738, 737, 735, 734, 730, 726, 725, 724, 718, 716, 711, 706, 704, 700, 696, 692, 690, 684, 680, 678, 676, 672, 667, 661, 656, 651, 645, 643, 638, 637, 636, 635, 634, 631, 630, 624, 621, 617, 616, 615, 614, 609, 603, 597, 596, 594, 589, 584, 582, 576, 570, 568, 565, 560, 557, 551, 548, 544, 542, 541, 535, 530, 526, 520, 515, 512, 506, 503, 502, 499, 498, 494, 490, 487, 483, 481, 475, 473, 468, 463, 460, 458, 453, 448, 444, 439, 437, 435, 432, 430, 427, 421, 418, 417, 414, 408, 405, 400, 398, 396, 393, 391, 388, 383, 377, 373, 372, 371, 367, 361, 357, 355, 350, 344, 341, 337, 335, 330, 328, 327, 326, 321, 317, 312, 310, 304, 303, 298, 296, 291, 290, 285, 280, 275, 273, 269, 266, 264, 262, 260, 255, 251, 249, 246, 245, 241, 238, 235, 233, 228, 227, 225, 219, 213, 208, 203, 201, 196, 195, 189, 183, 178, 176, 171, 166, 160, 155, 149, 147, 145, 142, 140, 135, 134, 128, 126, 124, 122, 116, 112, 109, 107, 103, 100, 96, 90, 88, 83, 79, 76, 74, 73, 72, 71, 68, 67, 64, 63, 57, 52, 47, 44, 41, 40, 37, 32, 27, 26, 22, 18, 13, 7, 5, 2, -2, -7, -8, -10, -12};
+		int[] seqarr2 = {300, 299, 293, 289, 288, 282,281, 280, 277, 272, 266, 264, 260, 258, 253, 249, 245, 239, 237, 234, 232, 226, 220, 218, 216, 213, 209, 203, 198, 194, 193, 187, 186, 181, 180, 179, 177, 171, 168, 167, 165, 159, 155, 150, 146, 140, 136, 135, 130, 127, 124, 119, 118, 113, 111, 107, 101, 96, 92, 91, 88, 87, 86, 81, 80, 78, 73, 70, 69, 66, 63, 60, 54, 53, 47, 43, 40, 36, 30, 27, 25, 22, 17, 16, 15, 11, 7, 4, 2, 0, -1, -6, -11, -17, -21, -26, -28, -33, -37, -39, -41, -43, -48, -49, -51, -53, -59, -62, -65, -67, -70, -73, -75, -79, -80, -86, -91, -97, -100, -106, -112, -115, -117, -122, -127, -128, -133, -136, -138, -141, -142, -146, -147, -150, -151, -157, -163, -169, -172, -176, -181, -187, -190, -194, -195, -197, -198, -201, -204, -209, -215, -219, -221, -224, -229, -234, -239, -241, -242, -247, -253, -259, -260, -264, -267, -268, -270, -275, -281, -282, -287, -293, -297, -299, -301, -305, -307, -310, -314, -316, -320, -325, -328, -333, -338, -340, -342, -343, -348, -354, -355, -361, -363, -369, -372, -375, -376, -377, -378, -384, -387, -392, -396, -398, -399, -402, -405, -406, -411, -415, -420, -426, -428, -431, -437, -442, -448, -452, -456, -460, 301, -468, -471, -472, -478, -484, -486, -492, -498, -500, -502, -506, -507, -511, -515, -516, -517, -518, -520, -526, -529, -535, -540, -545, -550, -556, -557, -558, -562, -564, -569, -573, -576, -580, -584, -588, -589, -592, -595, -599, -603, -607, -611, -617, -618, -622, -625, -629, -631, -632, -638, -642, -645, -650, -651, -657, -658, -664, -669, -670, -674, -675, -678, -680, -681, -682, -686, -691, -695, -699, -700, -703, -705, -708, -712, -714, -720, -721, -727, -729, -733};
 
-
+		
+		System.out.println(longestSharedSequence(seqarr1, seqarr2));
+		
+		int[] test1 = {998, 993, 988};
+		int[] test2 = {998, 993, 988};
+		
+//		System.out.println(test1==test2);
+//		System.out.println(compareArrays(test1, test2));
+		
+//		System.out.println(longestConsecutiveSequence(seqarr1));
+		
+		int[] arrayforsubbing = {1000, 998, 993, 988, 984, 980, 977, 972, 969, 966, 964, 958, 956, 952, 951, 1,2,3,4,5,6,7,8, 945, 941, 938, 937, 936, 935, 932, 931, 926, 925, 922, 919, 917, 911, 907, 905, 900, 894, 893, 889, 887, 885, 879, 878, 876, 871, 866, 863, 858, 854, 850, 846, 842, 837, 835, 834, 832, 828, 827, 821, 816, 814, 812, 809, 806, 805, 804, 799, 795, 789, 787, 781, 778, 772, 768, 765, 764, 760, 758, 754, 752, 750, 749, 743, 741, 739, 738, 737, 735, 734, 730, 726, 725, 724, 718, 716, 711, 706, 704, 700, 696, 692, 690, 684, 680, 678, 676, 672, 667, 661, 656, 651, 645, 643, 638, 637, 636, 635, 634, 631, 630, 624, 621, 617, 616, 615, 614, 609, 603, 597, 596, 594, 589, 584, 582, 576, 570, 568, 565, 560, 557, 551, 548, 544, 542, 541, 535, 530, 526, 520, 515, 512, 506, 503, 502, 499, 498, 494, 490, 487, 483, 481, 475, 473, 468, 463, 460, 458, 453, 448, 444, 439, 437, 435, 432, 430, 427, 421, 418, 417, 414, 408, 405, 400, 398, 396, 393, 391, 388, 383, 377, 373, 372, 371, 367, 361, 357, 355, 350, 344, 341, 337, 335, 330, 328, 327, 326, 321, 317, 312, 310, 304, 303, 298, 296, 291, 290, 285, 280, 275, 273, 269, 266, 264, 262, 260, 255, 251, 249, 246, 245, 241, 238, 235, 233, 228, 227, 225, 219, 213, 208, 203, 201, 196, 195, 189, 183, 178, 176, 171, 166, 160, 155, 149, 147, 145, 142, 140, 135, 134, 128, 126, 124, 122, 116, 112, 109, 107, 103, 100, 96, 90, 88, 83, 79, 76, 74, 73, 72, 71, 68, 67, 64, 63, 57, 52, 47, 44, 41, 40, 37, 32, 27, 26, 22, 18, 13, 7, 5, 2, -2, -7, -8, -10, -12};
+//		System.out.println(longestConsecutiveSequence(arrayforsubbing));
+		
 	}
 	
 	private static void printArrayLinear(double[] array) {
@@ -380,7 +402,6 @@ public class ArrayMethods {
 		
 	}
 
-
 	public static int longestConsecutiveSequence(int[] array1){
 		/**This method counts the longest consequtive sequence in an array.
 		 * It does not matter where the sequence begins
@@ -392,7 +413,46 @@ public class ArrayMethods {
 		 * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
 		 * */
 
-		return 0;
+		int length = array1.length;
+		
+		int max = 1;
+		int count = 1;
+		
+		for (int i = 0; i < length; i++) {
+			for (int j = i; j < length; j++) {
+				int[] currentArr = createSubarray(array1, i, j);
+//				printArrayLinear(currentArr);
+				count = 1;
+				for (int k = 1; k < currentArr.length; k++) {
+					if (currentArr[k] == (currentArr[k-1] + 1)) {
+						count++;
+						if (count > max) {
+							max = count;
+						}
+//						System.out.println("count " + count + ", max " + max);
+					}
+					else {
+						count = 0;
+						break;
+					}
+				}
+			}
+		}
+		return max;
+	}
+
+	private static int[] createSubarray(int[] array1, int a, int b) {
+		int outLength = (b - a) + 1;
+		int[] arrayOut = new int[outLength];
+		if (a == b) {
+			arrayOut[0] = array1[a];
+		}
+		else {
+			for (int i = 0; i < outLength; i++) {
+				arrayOut[i] = array1[a + i];
+			}
+		}
+		return arrayOut;
 	}
 
 	public static int longestSharedSequence(int[] array1, int[] array2){
@@ -406,8 +466,68 @@ public class ArrayMethods {
 		 *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
 		 * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
 		 * */
+		
+		int length1 = array1.length;
+		int length2 = array2.length;
+		
+		int maxSeqLength = 0;
+		
+		if (length1 <= length2) {
+			maxSeqLength = length1;
+		}
+		else {
+			maxSeqLength = length2;
+		}
+		
+		int max = 0;
+		
+		for (int i = 0; i < length1; i++) {
+			for (int j = i; j < length1; j++) {
+				int[] newSeq = createSubarray(array1, i, j);
+				int seqLength = (j - i) + 1;
+				
+//				printArrayLinear(newSeq);
+					
+				for (int c = 0; c < length2; c++) {
+					for (int d = c; d < length2; d++) {
+						if((d - c) + 1 == seqLength){
+							int[] newSeq2 = createSubarray(array2, c, d);
+//							printArrayLinear(newSeq2);
+							if (compareArrays(newSeq, newSeq2)){
+//								System.out.println("true");
+//								printArrayLinear(newSeq);
+//								printArrayLinear(newSeq2);
+//								System.out.println(seqLength);
+//								System.out.println((seqLength > max));
+								if (seqLength > max) {
+									max = seqLength;
+								}
+//								System.out.println(max);
+//								System.out.println(" ");
+							}
+						}
+					}
+				}
+				
+			}
+		}
+		
 
-		return 0;
+		return max;
+	}
+	
+	public static boolean compareArrays(int[] arr1, int[] arr2) {
+		if(arr1.length != arr2.length) {
+			return false;
+		}
+		else{			
+			for (int i = 0; i < arr1.length; i++) {
+				if (arr1[i] != arr2[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 
 	public static int[] generateDistinctItemsList(int n){
