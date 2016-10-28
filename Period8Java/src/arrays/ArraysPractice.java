@@ -52,19 +52,52 @@ public class ArraysPractice {
 //		printArray(ListCardsInDeck());
 		
 		//		5
-		Object[] newArrayForSwaps = {true, false, 3, 7.577, "Hi, I'm Paul!"};
-		boolean[] bewArrayForSwaps = {false, false, false, true, true, true};
+//		Object[] newArrayForSwaps = {true, false, 3, 7.577, "Hi, I'm Paul!"};
+//		boolean[] bewArrayForSwaps = {false, false, false, true, true, true};
+//		
+//		printArray(swapArrayItems(2, 4, newArrayForSwaps));
 		
-		printArray(swapArrayItems(2, 4, newArrayForSwaps));
 	}
 	
+	private static void listPrimes(int limit) {
+		int lastToCheck = (int)(Math.sqrt(limit));
+		boolean[] numbers = new boolean[limit+1];
+		
+		for (int i = 0; i < limit + 1; i++) {
+			numbers[i] = true;
+		}
+		
+		numbers[0] = false;
+		numbers[1] = false;
+		
+		for (int p = 2; p <= lastToCheck; p++) {
+			if (numbers[p]) {
+				System.out.print("\n " + p + " is prime. Crossing off: ");
+				for (int i = (int)(Math.pow(p, 2)); i <= lastToCheck; i += p) {
+					System.out.print(i + ", ");
+					numbers[i] = false;
+				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unused")
 	private static void printArray(Object[] a) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < a.length; i++) {
 			System.out.println(a[i]);
 		}
 	}
+	
+	public static void printArrayLinear(int[] js){
+		System.out.print(js[0]);
+		for (int i = 1; i < js.length; i++) {
+			System.out.print(", ");
+			System.out.print(js[i]);
+		}
+	}
 
+	@SuppressWarnings("unused")
 	private static Object[] swapArrayItems(int a, int b, Object[] array) {
 		// TODO Auto-generated method stub
 		Object storedObject;
