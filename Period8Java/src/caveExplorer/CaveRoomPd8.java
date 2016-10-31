@@ -6,4 +6,14 @@ public class CaveRoomPd8 {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void enter() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setConnection(CaveRoomPd8 caveRoomPd8) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
