@@ -31,10 +31,34 @@ public class TwoDArraysIntro {
 			}
 		}
 		
+		for (int row = 7; row < pic.length; row++) {
+			for (int col = 0; col < pic[row].length; col++) {
+				pic[row][col] = "w";
+			}
+		}
+		
+		pic[0][2] = "v";
+		pic[0][5] = "v";
+		pic[1][6] = "v";
+		
+		pic[1][2] = "\\";
+		pic[1][3] = "|";
+		pic[1][4] = "/";
+		pic[2][1] = "-";
+		pic[2][2] = "-";
+		pic[2][3] = "O";
+		pic[2][4] = "-";
+		pic[2][5] = "-";
+		pic[3][4] = "\\";
+		pic[3][3] = "|";
+		pic[3][2] = "/";
+		
+		
 		for (String[] row : pic) {
 			for (String col : row){
 				System.out.print(col);
 			}
+			System.out.print("\n");
 		}
 		
 	}
