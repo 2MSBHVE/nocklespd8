@@ -10,10 +10,48 @@ public class TwoDArraysIntro {
 		boolean[][] mines = new boolean[6][6];
 		plantMines(mines);
 		
-		String[][] field = createField(mines)
+		String[][] field = createField(mines);
+		printPic(field);
 		
 	}
+
+	private static void plantMines(boolean[][] mines) {
+		int numMines = 10;
+		while (numMines > 0) {
+			int row = (int)(Math.random() * mines.length);
+			int col = (int)(Math.random() * mines[0].length);
+			
+//			prevents selection of existing mine
+			if (!mines[row][col]) {
+				mines[row][col] = true;
+				numMines--;
+			}
+		}
+	}
 	
+	private static String[][] createField(boolean[][] mines) {
+		String[][] field = new String[mines.length][mines[0].length];
+		
+		
+		
+		
+		return field;
+	}
+	
+	private static String countNearby(boolean[][] mines, int row, int col){
+		
+		for (int r = 0; r < mines.length; r++) {
+			for (int c = 0; c < mines.length; c++) {
+				if (r >= 0 && r < mines.length && c >= 0 && c < mines.length) {
+					
+				}
+			}
+		}
+		
+		
+		return null;
+	}
+
 	public static void printPic(String[][] pic) {
 		for (String[] row : pic) {
 			for (String col : row){
