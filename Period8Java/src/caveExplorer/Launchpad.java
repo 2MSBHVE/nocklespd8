@@ -53,14 +53,26 @@ public class Launchpad {
 		launchpad = MidiSystem.getMidiDevice(infosA[launchpadDeviceNumber]);
 		launchpad.open();
 
-		int[][] pixelsssss = {{1,3},{2,4}};
-		display(pixelsssss, 3, "flash");
 		nrec = launchpad.getReceiver();
+		int[][] pixelsssss = {{1,3},{2,4}};
+		display(pixelsssss, 2, "solid");
+		
+			
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				int[] coordsArr = {i, j};
+				display(coordsArr, 21, "solid");
+				Thread.sleep(1);
+			}
+		}
+		
 		
 	}
 	
 	
-	
+
+
+
 	private static int[] seqIntArray(int startNum, int length){
 		
 		int[] outArr = new int[length];
@@ -86,10 +98,35 @@ public class Launchpad {
 			
 			int disp = keys[pxl[i][0]][pxl[i][1]];
 			
-			System.out.println(disp);
+//			System.out.println(disp);
 			
-			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, 2, disp, color);
-			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, 2, disp, color);
+			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
+			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
+			
+			launchpad.getReceiver().send(msg1, -1);
+//			Thread.sleep(1000);
+//			launchpad.getReceiver().send(msg2, -1);
+		}
+	}
+	
+	public static void display(int[] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+		for (int i = 0; i < pxl.length; i++) {
+			
+			int channel = 5;
+			
+			if (mode == "blink" || mode == "flash") {
+				channel = 1;
+			}
+			else if (mode == "pulse" || mode == "fade") {
+				channel = 2;
+			} 
+			
+			int disp = keys[pxl[0]][pxl[1]];
+			
+//			System.out.println(disp);
+			
+			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
+			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
 			
 			launchpad.getReceiver().send(msg1, -1);
 //			Thread.sleep(1000);
