@@ -65,11 +65,11 @@ public class MIDITest5 {
 			
 			Sequencer sqr = MidiSystem.getSequencer();
 			
-			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, 5, 64, 64);
-			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, 5, 64, 64);
+			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, 2, 64, 3);
+			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, 2, 64, 3);
 			
 			nrec.send(msg1, -1);
-			Thread.sleep(500);
+			Thread.sleep(5000);
 			nrec.send(msg2, -1);
 			
 //			data = {85, 40, 40};

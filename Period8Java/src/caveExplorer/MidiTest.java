@@ -11,8 +11,8 @@ import javax.sound.midi.Receiver;
 import javax.sound.midi.Sequencer;
 
 public class MidiTest {
-	//   public static String inputName  = "IACBus2";
-	public static String outputName = "IACBus1";
+	public static String inputName  = "IACBus2";
+	public static String outputName = "StandalonePort";
 	public MidiDevice    input;
 	public MidiDevice    output;
 	public Receiver      rcvr;
@@ -50,9 +50,9 @@ public class MidiTest {
 			for (Info inf : info) {
 				String name = inf.getName().replace(" ", "");
 				System.out.println("\"" + name + "\"");
-				//            if (name.equals(inputName)) {
-				//               input = MidiSystem.getMidiDevice(inf);
-				//            }
+				            if (name.equals(inputName)) {
+				               input = MidiSystem.getMidiDevice(inf);
+				            }
 				if (name.equals(outputName)) {
 					output = MidiSystem.getMidiDevice(inf);
 				}
