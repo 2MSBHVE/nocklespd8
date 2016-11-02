@@ -6,6 +6,24 @@ import java.util.Iterator;
 public class TwoDArraysIntro {
 
 	public static void main(String[] args) {
+		
+		boolean[][] mines = new boolean[6][6];
+		plantMines(mines);
+		
+		String[][] field = createField(mines)
+		
+	}
+	
+	public static void printPic(String[][] pic) {
+		for (String[] row : pic) {
+			for (String col : row){
+				System.out.print(col);
+			}
+			System.out.print("\n");
+		}
+	}
+	
+	public static void origStuff() {
 //		String[] xox = {"x","o","x","o","x"};
 //		System.out.println(Arrays.toString(xox));
 	
@@ -36,22 +54,55 @@ public class TwoDArraysIntro {
 				pic[row][col] = "w";
 			}
 		}
+		pic[0][0] = "_";
+		pic[0][1] = "_";
+		pic[0][2] = "_";
+		pic[0][3] = "_";
+		pic[0][4] = "_";
+		pic[0][5] = "_";
+		pic[0][6] = "_";
+		pic[0][7] = "_";
 		
-		pic[0][2] = "v";
-		pic[0][5] = "v";
-		pic[1][6] = "v";
 		
-		pic[1][2] = "\\";
-		pic[1][3] = "|";
-		pic[1][4] = "/";
-		pic[2][1] = "-";
-		pic[2][2] = "-";
-		pic[2][3] = "O";
-		pic[2][4] = "-";
-		pic[2][5] = "-";
-		pic[3][4] = "\\";
-		pic[3][3] = "|";
-		pic[3][2] = "/";
+		pic[1][2] = "v";
+		pic[1][5] = "v";
+		pic[2][6] = "v";
+
+		pic[2][2] = "\\";
+		pic[2][3] = "|";
+		pic[2][4] = "/";
+		pic[3][1] = "-";
+		pic[3][2] = "-";
+		pic[3][3] = "O";
+		pic[3][4] = "-";
+		pic[3][5] = "-";
+		pic[4][4] = "\\";
+		pic[4][3] = "|";
+		pic[4][2] = "/";
+		
+		pic[1][0] = "|";
+		pic[2][0] = "|";
+		pic[3][0] = "|";
+		pic[4][0] = "|";
+		pic[5][0] = "|";
+		pic[6][0] = "|";
+		
+		pic[1][7] = "|";
+		pic[2][7] = "|";
+		pic[3][7] = "|";
+		pic[4][7] = "|";
+		pic[5][7] = "|";
+		pic[6][7] = "|";
+		
+		
+		pic[7][0] = "|";
+		pic[7][1] = "_";
+		pic[7][2] = "_";
+		pic[7][3] = "_";
+		pic[7][4] = "_";
+		pic[7][5] = "_";
+		pic[7][6] = "_";
+		pic[7][7] = "|";
 		
 		
 		for (String[] row : pic) {
@@ -60,6 +111,8 @@ public class TwoDArraysIntro {
 			}
 			System.out.print("\n");
 		}
+		
+		
 		
 	}
 	
