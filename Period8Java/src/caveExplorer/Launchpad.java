@@ -8,6 +8,7 @@ import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
+import javax.sound.midi.Transmitter;
 import javax.sound.midi.MidiDevice.Info;
 
 public class Launchpad {
@@ -19,7 +20,9 @@ public class Launchpad {
 	public static final int YELLOW = 13;
 	
 	static MidiDevice launchpad;
+	static MidiDevice launchpadIn;
 	static Receiver nrec;
+	static Transmitter ntra;
 	
 	public static final int[][] keys = {
 			{64,65,66,67,96,97,98,99},
@@ -36,7 +39,8 @@ public class Launchpad {
 	static String displaysAs = "LivePort";
 	
 	public static void main(String[] args) throws MidiUnavailableException, InterruptedException, InvalidMidiDataException {
-		int launchpadDeviceNumber = 0;
+		int launchpadDeviceNumber = -1;
+		int	launchpadInNumber = -1;
 		
 		for (int i = 0; i < infosA.length; i++) {
 			Info inf = infosA[i];
@@ -47,15 +51,31 @@ public class Launchpad {
 			}
 			
 		}
+		for (int i = 0; i < infosA.length; i++) {
+			Info inf = infosA[i];
+			String name = inf.getName().replace(" ", "");
+			System.out.println("\"" + name + "\"");
+			if (name.equals(displaysAs)) {
+				launchpadInNumber = i;
+				break;
+			}
+			
+		}
 		
+		System.out.println(launchpadInNumber);
 		System.out.println(launchpadDeviceNumber);
 		
 		launchpad = MidiSystem.getMidiDevice(infosA[launchpadDeviceNumber]);
+		launchpadIn = MidiSystem.getMidiDevice(infosA[launchpadInNumber]);
 		launchpad.open();
-
+		launchpadIn.open();
+		
 		nrec = launchpad.getReceiver();
-		int[][] pixelsssss = {{1,3},{2,4}};
-		display(pixelsssss, 2, "solid");
+		ntra = launchpadIn.getTransmitter();
+		
+		
+//		int[][] pixelsssss = {{1,3},{2,4}};
+//		display(pixelsssss, 2, "solid");
 		
 			
 		for (int i = 0; i < 8; i++) {
@@ -66,8 +86,14 @@ public class Launchpad {
 			}
 		}
 		
+		Thread.sleep(500);
+		
+		clearPads(10, 0);
+		
 		
 	}
+	
+	
 	
 	
 
@@ -134,18 +160,19 @@ public class Launchpad {
 		}
 	}
 	
-	public static void clearPads(int indDelay, int rowDelay) throws InvalidMidiDataException, MidiUnavailableException {
+	public static void clearPads(int indDelay, int rowDelay) throws InvalidMidiDataException, MidiUnavailableException, InterruptedException {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				
-				for (int channel = 0; i < 6; i++) {
-	
-					ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, keys[i][j], 0);
-	
+					ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, 1, keys[i][j], 0);
+					ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_ON, 2, keys[i][j], 0);
+					ShortMessage msg5 = new ShortMessage(ShortMessage.NOTE_ON, 5, keys[i][j], 0);
 					launchpad.getReceiver().send(msg1, -1);
-					
-				}
+					launchpad.getReceiver().send(msg2, -1);
+					launchpad.getReceiver().send(msg5, -1);
+					Thread.sleep(indDelay);
 			}
+			Thread.sleep(rowDelay);
 		}
 	}
 }
