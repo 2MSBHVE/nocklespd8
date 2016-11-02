@@ -133,5 +133,21 @@ public class Launchpad {
 //			launchpad.getReceiver().send(msg2, -1);
 		}
 	}
-
+	
+	public static void clearPads(int indDelay, int rowDelay) throws InvalidMidiDataException, MidiUnavailableException {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				
+				for (int channel = 0; i < 6; i++) {
+	
+					ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, keys[i][j], 0);
+	
+					launchpad.getReceiver().send(msg1, -1);
+					
+				}
+			}
+		}
+	}
 }
+
+
