@@ -15,30 +15,34 @@ public class TwoDArraysIntro {
 	
 	static Scanner in = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 //		boolean[][] mines = new boolean[20][100];
 //		plantMines(mines);
 //		
 //		String[][] field = createField(mines);
 //		
-		grid = newGrid(8, 15);
 		
+		grid = newGrid(8, 8);
+
 		printPic(grid);
+//		Thread.sleep(250);
 		
-		 arr2D = new String[5][5];
-		 for (int row = 0; row < arr2D.length; row++) {
-			for (int col = 0; col < arr2D[row].length; col++) {
-				arr2D[row][col] = "(" + row + ", " + col + ")";
-			}
-		 }
+		
+		
+//		 arr2D = new String[5][5];
+//		 for (int row = 0; row < arr2D.length; row++) {
+//			for (int col = 0; col < arr2D[row].length; col++) {
+//				arr2D[row][col] = "(" + row + ", " + col + ")";
+//			}
+//		 }
 		 
 		 starti = 2;
 		 startj = 2;
 		 treasurei = 4;
 		 treasurej = 3;
 		 
-//		 startExploring();
+		 startExploring();
 		
 	}
 
