@@ -7,16 +7,17 @@ public class TwoDArraysIntro {
 
 	public static void main(String[] args) {
 		
-		boolean[][] mines = new boolean[6][6];
+		boolean[][] mines = new boolean[20][100];
 		plantMines(mines);
 		
 		String[][] field = createField(mines);
+		
 		printPic(field);
 		
 	}
 
 	private static void plantMines(boolean[][] mines) {
-		int numMines = 10;
+		int numMines = 1000;
 		while (numMines > 0) {
 			int row = (int)(Math.random() * mines.length);
 			int col = (int)(Math.random() * mines[0].length);
@@ -29,27 +30,82 @@ public class TwoDArraysIntro {
 		}
 	}
 	
-	private static String[][] createField(boolean[][] mines) {
-		String[][] field = new String[mines.length][mines[0].length];
-		
-		
-		
-		
-		return field;
-	}
 	
-	private static String countNearby(boolean[][] mines, int row, int col){
-		
-		for (int r = 0; r < mines.length; r++) {
-			for (int c = 0; c < mines.length; c++) {
-				if (r >= 0 && r < mines.length && c >= 0 && c < mines.length) {
-					
+	
+	
+	
+	
+	
+	
+	private static String[][] createField(boolean[][] mines) {
+		String[][] field = 
+				new String[mines.length][mines[0].length];
+		for(int row = 0; row < field.length; row++){
+			for(int col = 0; col < field[row].length; col ++){
+				if(mines[row][col])field[row][col]="X";
+				else{
+					field[row][col] = countNearby(mines,row,col);
 				}
 			}
 		}
 		
 		
-		return null;
+		return field;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+	private static String countNearby(boolean[][] mines, int row, int col) {
+//		for(int r = row - 1; r <= row +1; r ++){
+//			for(int c = col -1; c <= col+1; c++){
+//				//check that this element exists
+//				if(r >=0 && r < mines.length &&
+//						c >=0 && c < mines[0].length){
+//					
+//				}
+//			}
+//		}
+		
+////		THIS METHOD ONLY CONSIDERS ACTUAL ELEMENTS
+//		int count = 0;
+//		for (int r = 0; r < mines.length; r++) {
+//			for (int c = 0; c < mines[r].length; c++) {
+//				if (Math.abs(r-row) + Math.abs(c-col) == 1 && mines[r][c]) {
+//					count++;
+//				}
+//			}
+//		}
+//		return "" + count;
+		
+		
+//		THIS METHOD ALLOWS YOU TO BE MOST SPECIFIC
+//		FOR EXAMPLE, IF YOU ONLY WANT NORTH AND EAST
+		int count = 0;
+		count += isValidAndTrue(mines, row-1, col);
+		count += isValidAndTrue(mines, row+1, col);
+		count += isValidAndTrue(mines, row, col-1);
+		count += isValidAndTrue(mines, row, col+1);
+		
+		
+		
+		return ""+count;
+	}
+
+
+	
+
+	private static int isValidAndTrue(boolean[][] mines, int i, int j) {
+		if (i >= 0 && i < mines.length && j >= 0 && j < mines[0].length && mines[i][j]) {
+			return 1;
+		}
+		return 0;
 	}
 
 	public static void printPic(String[][] pic) {
