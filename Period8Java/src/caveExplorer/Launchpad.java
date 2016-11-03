@@ -84,7 +84,7 @@ public class Launchpad {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				int[] coordsArr = {i, j};
-				display(coordsArr, 0, "solid");
+				display(launchpad, coordsArr, 79, "solid");
 				Thread.sleep(2);
 			}
 		}
@@ -97,13 +97,17 @@ public class Launchpad {
 				{2,3},
 				{2,4},
 				};
-		display(pixelsssss, 3, "solid");
+//		display(launchpad, pixelsssss, 3, "solid");
+		
+		long[] times = {500, 200, 500, 200, 500, 200};
+		
+		flashImg(launchpad, pixelsssss, GREEN, times, 0, 0, true);
 		
 			
 		
 		Thread.sleep(2000);
 		
-		clearPads(2, 0);
+		clearPads(launchpad, 2, 0);
 		
 		System.exit(0);
 	}
@@ -125,7 +129,7 @@ public class Launchpad {
 		return outArr;
 	}
 	
-	public static void display(int[][] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+	public static void display(MidiDevice device, int[][] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
 		for (int i = 0; i < pxl.length; i++) {
 			
 			int channel = 5;
@@ -148,11 +152,11 @@ public class Launchpad {
 //			Thread.sleep(1000);
 //			launchpad.getReceiver().send(msg2, -1);
 			
-			changePixel(launchpad, pxl[i], channel, color);
+			changePixel(device, pxl[i], channel, color);
 		}
 	}
 	
-	public static void display(int[] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+	public static void display(MidiDevice device, int[] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
 		for (int i = 0; i < pxl.length; i++) {
 			
 			int channel = 5;
@@ -164,35 +168,37 @@ public class Launchpad {
 				channel = 2;
 			} 
 			
-			int disp = keys[pxl[0]][pxl[1]];
+			changePixel(device, pxl, channel, color);
 			
-//			System.out.println(disp);
-			
-			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
-			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
-			
-			launchpad.getReceiver().send(msg1, -1);
-//			Thread.sleep(1000);
+//			int disp = keys[pxl[0]][pxl[1]];
+//			
+////			System.out.println(disp);
+//			
+//			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
+//			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
+//			
+//			device.getReceiver().send(msg1, -1);
+////			Thread.sleep(1000);
 //			launchpad.getReceiver().send(msg2, -1);
 		}
 	}
 	
-	public static void clearPads(int indDelay, int rowDelay) throws InvalidMidiDataException, MidiUnavailableException, InterruptedException {
+	public static void clearPads(MidiDevice device, int indDelay, int rowDelay) throws InvalidMidiDataException, MidiUnavailableException, InterruptedException {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				
 //					ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, 1, keys[i][j], 0);
 //					ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_ON, 2, keys[i][j], 0);
 //					ShortMessage msg5 = new ShortMessage(ShortMessage.NOTE_ON, 5, keys[i][j], 0);
-//					launchpad.getReceiver().send(msg1, -1);
-//					launchpad.getReceiver().send(msg2, -1);
-//					launchpad.getReceiver().send(msg5, -1);
+//					device.getReceiver().send(msg1, -1);
+//					device.getReceiver().send(msg2, -1);
+//					device.getReceiver().send(msg5, -1);
 				
 				int[] pxl = {i, j};
 
-				changePixel(launchpad, pxl, 1, 0);
-				changePixel(launchpad, pxl, 2, 0);
-				changePixel(launchpad, pxl, 5, 0);
+				changePixel(device, pxl, 1, 0);
+				changePixel(device, pxl, 2, 0);
+				changePixel(device, pxl, 5, 0);
 
 				Thread.sleep(indDelay);
 			}
@@ -268,6 +274,73 @@ public class Launchpad {
 	        }
 		}
 	}
+	
+	public static void flashImg(MidiDevice device, int[][] pxls, int color, long[] times, int indDelay, int rowDelay, boolean pauseAtEnd) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException{
+		int[][] sortedPixels = new int[pxls.length][2];
+		
+		int count = 0;
+		for (int i = 0; i < keys.length; i++) {
+			for (int j = 0; j < keys[i].length; j++) {
+				int[] toSearchFor = {i,j};
+				System.out.println("searching for " + toSearchFor[0] + " " + toSearchFor[1]);
+				int index = arrIndexOf(toSearchFor, pxls);
+				System.out.println(index >= 0);
+				if(index >= 0) {
+					sortedPixels[count] = pxls[index];
+					count++;
+				}
+			}
+		}
+		
+		for (int i = 0; i < times.length; i++) {
+			display(device, sortedPixels, color, "solid");
+			Thread.sleep(times[i]);
+			i++;
+			clearPads(device, indDelay, rowDelay);
+			if (i < times.length - 1) {
+				Thread.sleep(times[i]);
+			}
+		}
+		if(pauseAtEnd) {
+			display(device, sortedPixels, color, "solid");
+		}
+	}
+
+
+
+
+
+
+
+	private static int arrIndexOf(int[] nArr, int[][] arr2D) {
+		for (int i = 0; i < arr2D.length; i++) {
+				int count = 0;
+				for (int n = 0; n < arr2D[i].length; n++) {
+					if (arr2D[i][n] == nArr[n]) {
+						count++;
+					}
+				}
+				if (count == nArr.length) {
+					return i;
+				}
+				
+				
+//				if(arr2D[i].equals(n)){
+//					return i;
+//				}
+			
+		}
+		return -1;
+	}
 }
+
+
+
+
+
+
+
+	
+
 
 
