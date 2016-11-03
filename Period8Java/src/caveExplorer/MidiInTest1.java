@@ -23,6 +23,7 @@ import javax.sound.midi.MidiMessage;
 
 
 /**
+ * @author Max Friedman
  * MidiMessage interpreter code by Sami Koivu
  *
  */
@@ -101,7 +102,7 @@ public class MidiInTest1 {
 					cursize = currentTrack.size();
 //					System.out.println(currentTrack.size());
 				}
-				if(cursize >= 3) {
+				if(cursize >= 2) {
 					sequencer.stopRecording();
 				}
 			}
@@ -109,45 +110,29 @@ public class MidiInTest1 {
 			sequencer.recordDisable(currentTrack);
 			Sequence sequence = sequencer.getSequence();
 
-	        int trackNumber = 0;
-	        for (Track track :  sequence.getTracks()) {
-	            trackNumber++;
-	            System.out.println("Track " + trackNumber + ": size = " + track.size());
-	            System.out.println();
-	            for (int i=0; i < track.size(); i++) { 
-	                MidiEvent event = track.get(i);
-	                System.out.print("@" + event.getTick() + " ");
-	                MidiMessage message = event.getMessage();
-	                if (message instanceof ShortMessage) {
-	                    ShortMessage sm = (ShortMessage) message;
-	                    System.out.print("Channel: " + sm.getChannel() + " ");
-	                    if (sm.getCommand() == NOTE_ON) {
-	                        int key = sm.getData1();
-	                        int octave = (key / 12)-1;
-	                        int note = key % 12;
-	                        String noteName = NOTE_NAMES[note];
-	                        int velocity = sm.getData2();
-	                        System.out.println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity);
-	                    } else if (sm.getCommand() == NOTE_OFF) {
-	                        int key = sm.getData1();
-	                        int octave = (key / 12)-1;
-	                        int note = key % 12;
-	                        String noteName = NOTE_NAMES[note];
-	                        int velocity = sm.getData2();
-	                        System.out.println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity);
-	                    } else {
-	                        System.out.println("Command:" + sm.getCommand());
-	                    }
-	                } else {
-	                    System.out.println("Other message: " + message.getClass());
+			int trackNumber = 0;
+			for (Track track :  sequence.getTracks()) {
+				trackNumber++;
+				for (int i=0; i < track.size(); i++) { 
+					MidiEvent event = track.get(i);
+					MidiMessage message = event.getMessage();
+					if (message instanceof ShortMessage) {
+						ShortMessage sm = (ShortMessage) message;
+						if (sm.getCommand() == NOTE_ON) {
+							int key = sm.getData1();
+							int velocity = sm.getData2();
+							if (velocity > 0) {
+								System.out.println(key);
+							}
+						}
+//	                    else if (sm.getCommand() == NOTE_OFF) {
+//	                        int key = sm.getData1();
+//	                        int velocity = sm.getData2();
+//	                        System.out.println(key);
+//	                    }
 	                }
 	            }
-
-	            System.out.println();
 	        }
-			
 		}
-		
 	}
-
 }

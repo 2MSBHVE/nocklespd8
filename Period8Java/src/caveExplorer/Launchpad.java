@@ -4,10 +4,15 @@ import java.util.Arrays;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiEvent;
+import javax.sound.midi.MidiMessage;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
 import javax.sound.midi.ShortMessage;
+import javax.sound.midi.Track;
 import javax.sound.midi.Transmitter;
 import javax.sound.midi.MidiDevice.Info;
 
@@ -18,6 +23,8 @@ public class Launchpad {
 	public static final int GREEN = 21;
 	public static final int BLUE = 49;
 	public static final int YELLOW = 13;
+	
+	public static final int NOTE_ON = 0x90;
 	
 	static MidiDevice launchpad;
 	static MidiDevice launchpadIn;
@@ -74,23 +81,31 @@ public class Launchpad {
 		ntra = launchpadIn.getTransmitter();
 		
 		
-//		int[][] pixelsssss = {{1,3},{2,4}};
-//		display(pixelsssss, 2, "solid");
-		
-			
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				int[] coordsArr = {i, j};
-				display(coordsArr, 21, "solid");
-				Thread.sleep(1);
+				display(coordsArr, 0, "solid");
+				Thread.sleep(2);
 			}
 		}
+		int[][] pixelsssss = {
+				{0,1},
+				{1,1},
+				{1,3},
+				{2,1},
+				{2,2},
+				{2,3},
+				{2,4},
+				};
+		display(pixelsssss, 3, "solid");
 		
-		Thread.sleep(500);
+			
 		
-		clearPads(10, 0);
+		Thread.sleep(2000);
 		
+		clearPads(2, 0);
 		
+		System.exit(0);
 	}
 	
 	
@@ -186,6 +201,70 @@ public class Launchpad {
 	public static void changePixel(MidiDevice device, int[] pxl, int channel, int color) throws InvalidMidiDataException, MidiUnavailableException {
 		ShortMessage msg = new ShortMessage(ShortMessage.NOTE_ON, channel, keys[pxl[0]][pxl[1]], color);
 		device.getReceiver().send(msg, -1);
+	}
+	
+	public static int getInput() throws MidiUnavailableException, InvalidMidiDataException{
+		Sequencer sequencer = MidiSystem.getSequencer();
+		
+		Transmitter transmitter;
+		Receiver receiver;
+
+		// Open a connection to the default sequencer (as specified by MidiSystem)
+		sequencer.open();
+		// Get the transmitter class from your input device
+		transmitter = launchpadIn.getTransmitter();
+		// Get the receiver class from your sequencer
+		receiver = sequencer.getReceiver();
+		// Bind the transmitter to the receiver so the receiver gets input from the transmitter
+		transmitter.setReceiver(receiver);
+		
+		while(true){
+
+			Sequence seq = new Sequence(Sequence.PPQ, 1);
+			Track currentTrack = seq.createTrack();
+			sequencer.setSequence(seq);
+			sequencer.setTickPosition(1);
+			sequencer.recordEnable(currentTrack, -1);
+			sequencer.startRecording();
+			
+			int cursize = currentTrack.size();
+			while(sequencer.isRecording()){ 
+				if(currentTrack.size() != cursize){
+					cursize = currentTrack.size();
+//					System.out.println(currentTrack.size());
+				}
+				if(cursize >= 2) {
+					sequencer.stopRecording();
+				}
+			}
+			
+			sequencer.recordDisable(currentTrack);
+			Sequence sequence = sequencer.getSequence();
+
+			int trackNumber = 0;
+			for (Track track :  sequence.getTracks()) {
+				trackNumber++;
+				for (int i=0; i < track.size(); i++) { 
+					MidiEvent event = track.get(i);
+					MidiMessage message = event.getMessage();
+					if (message instanceof ShortMessage) {
+						ShortMessage sm = (ShortMessage) message;
+						if (sm.getCommand() == NOTE_ON) {
+							int key = sm.getData1();
+							int velocity = sm.getData2();
+							if (velocity > 0) {
+								System.out.println(key);
+							}
+						}
+//	                    else if (sm.getCommand() == NOTE_OFF) {
+//	                        int key = sm.getData1();
+//	                        int velocity = sm.getData2();
+//	                        System.out.println(key);
+//	                    }
+	                }
+	            }
+	        }
+		}
 	}
 }
 
