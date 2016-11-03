@@ -9,6 +9,9 @@ public class TwoDArraysIntro {
 	static String[][] arr2D;
 	static int starti;
 	static int startj;
+	static int treasurei;
+	static int treasurej;
+	static String[][] grid;
 	
 	static Scanner in = new Scanner(System.in);
 	
@@ -19,9 +22,9 @@ public class TwoDArraysIntro {
 //		
 //		String[][] field = createField(mines);
 //		
-//		String[][] grid = newGrid(4, 5);
+		grid = newGrid(8, 15);
 		
-//		printPic(grid);
+		printPic(grid);
 		
 		 arr2D = new String[5][5];
 		 for (int row = 0; row < arr2D.length; row++) {
@@ -32,14 +35,22 @@ public class TwoDArraysIntro {
 		 
 		 starti = 2;
 		 startj = 2;
+		 treasurei = 4;
+		 treasurej = 3;
 		 
-		 startExploring();
+//		 startExploring();
 		
 	}
 
 	private static void startExploring() {
 		while(true) {
 			System.out.println("You are in room " + arr2D[starti][startj] + ".");
+			
+			if (starti == treasurei && startj == treasurej) {
+				System.out.println("got eem");
+				break;
+			}
+			
 			System.out.println("What do you want to do?");
 			
 			String input = in.nextLine();
@@ -50,8 +61,54 @@ public class TwoDArraysIntro {
 	}
 
 	private static int[] interpretInput(String input) {
+//		verify input is valid
+		while (!isValid(input)) {
+			System.out.println("Sorry! In this game, you can only use the WASD and launchpad controls.");
+			System.out.println("Tell me again what you would like to do.");
+			input = in.nextLine();
+		}
 		
-		return null;
+		int currenti = starti;
+		int currentj = startj;
+		
+		input = input.toLowerCase();
+		
+		if(input.equals("w")){
+			currenti--;
+		}
+		else if (input.equals("s")) {
+			currenti++;
+		}
+		else if (input.equals("a")) {
+			currentj--;
+		}
+		else if (input.equals("d")) {
+			currentj++;
+		}
+		
+		int[] newCoordinates = {starti, startj};
+		if (currenti >= 0 && currenti < arr2D.length && currentj >= 0 && currentj < arr2D[0].length) {
+			newCoordinates[0] = currenti;
+			newCoordinates[1] = currentj;
+		}
+		else {
+			System.out.println("Sorry, you've reached the edge of the defined universe.");
+			System.out.println("Mr. Nockles did not offer extra points for coding areas outside the defined universe.");
+			System.out.println("Therefore, you may go no farther in this direction.");
+			System.out.println("Address all complaints to Mr. Nockles.");
+		}
+			return newCoordinates;
+	}
+
+	private static boolean isValid(String input) {
+		String[] validKeys = {"w", "a", "s", "d"};
+		for (String key : validKeys) {
+			if (input.toLowerCase().equals(key)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	
@@ -74,6 +131,12 @@ public class TwoDArraysIntro {
 		
 		String[][] arr = new String[height][width];
 		
+		for (int k = 0; k < arr.length; k++) {
+			for (int k2 = 0; k2 < arr[k].length; k2++) {
+				arr[k][k2] = " ";
+			}
+		}
+		
 		for (int k = 0; k < height; k++) {
 			arr[k][0] = "|";
 		}
@@ -87,13 +150,15 @@ public class TwoDArraysIntro {
 			for (int b = 0; b < j; b++) {
 				int topLeftX = (4 * b) + 1;
 
+//				arr[topLeftY + 2][topLeftX - 1] = "_";
 				arr[topLeftY + 2][topLeftX] = "_";
 				arr[topLeftY + 2][topLeftX + 1] = "_";
 				arr[topLeftY + 2][topLeftX + 2] = "_";
+//				arr[topLeftY + 2][topLeftX + 3] = "_";
 				
-				arr[topLeftY][topLeftX + 2] = "|";
-				arr[topLeftY + 1][topLeftX + 2] = "|";
-				arr[topLeftY + 2][topLeftX + 2] = "|";
+				arr[topLeftY][topLeftX + 3] = "|";
+				arr[topLeftY + 1][topLeftX + 3] = "|";
+				arr[topLeftY + 2][topLeftX + 3] = "|";
 //				arr[topLeftY + 3][topLeftX + 2] = "|";
 				
 //				arr[topLeftY][topLeftX] = "A";
