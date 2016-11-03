@@ -1,19 +1,106 @@
 package caveExplorer;
 
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Iterator;
 
 public class TwoDArraysIntro {
 
+	static String[][] arr2D;
+	static int starti;
+	static int startj;
+	
+	static Scanner in = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		
-		boolean[][] mines = new boolean[20][100];
-		plantMines(mines);
+//		boolean[][] mines = new boolean[20][100];
+//		plantMines(mines);
+//		
+//		String[][] field = createField(mines);
+//		
+//		String[][] grid = newGrid(4, 5);
 		
-		String[][] field = createField(mines);
+//		printPic(grid);
 		
-		printPic(field);
+		 arr2D = new String[5][5];
+		 for (int row = 0; row < arr2D.length; row++) {
+			for (int col = 0; col < arr2D[row].length; col++) {
+				arr2D[row][col] = "(" + row + ", " + col + ")";
+			}
+		 }
+		 
+		 starti = 2;
+		 startj = 2;
+		 
+		 startExploring();
 		
+	}
+
+	private static void startExploring() {
+		while(true) {
+			System.out.println("You are in room " + arr2D[starti][startj] + ".");
+			System.out.println("What do you want to do?");
+			
+			String input = in.nextLine();
+			int[] newCoordinates = interpretInput(input);
+			starti = newCoordinates[0];
+			startj = newCoordinates[1];
+		}
+	}
+
+	private static int[] interpretInput(String input) {
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	private static String[][] newGrid(int i, int j) {
+		int height = 3*i + 1;
+		int width = 4*j + 1;
+		
+		String[][] arr = new String[height][width];
+		
+		for (int k = 0; k < height; k++) {
+			arr[k][0] = "|";
+		}
+		
+		for (int k = 0; k < width; k++) {
+			arr[0][k] = "_";
+		}
+		
+		for (int a = 0; a < i; a++) {
+			int topLeftY = (3 * a) + 1;
+			for (int b = 0; b < j; b++) {
+				int topLeftX = (4 * b) + 1;
+
+				arr[topLeftY + 2][topLeftX] = "_";
+				arr[topLeftY + 2][topLeftX + 1] = "_";
+				arr[topLeftY + 2][topLeftX + 2] = "_";
+				
+				arr[topLeftY][topLeftX + 2] = "|";
+				arr[topLeftY + 1][topLeftX + 2] = "|";
+				arr[topLeftY + 2][topLeftX + 2] = "|";
+//				arr[topLeftY + 3][topLeftX + 2] = "|";
+				
+//				arr[topLeftY][topLeftX] = "A";
+			}
+		}
+		
+		return arr;
 	}
 
 	private static void plantMines(boolean[][] mines) {
