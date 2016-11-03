@@ -137,16 +137,18 @@ public class Launchpad {
 				channel = 2;
 			} 
 			
-			int disp = keys[pxl[i][0]][pxl[i][1]];
+//			int disp = keys[pxl[i][0]][pxl[i][1]];
 			
 //			System.out.println(disp);
 			
-			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
-			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
-			
-			launchpad.getReceiver().send(msg1, -1);
+//			ShortMessage msg1 = new ShortMessage(ShortMessage.NOTE_ON, channel, disp, color);
+//			ShortMessage msg2 = new ShortMessage(ShortMessage.NOTE_OFF, channel, disp, color);
+//			
+//			launchpad.getReceiver().send(msg1, -1);
 //			Thread.sleep(1000);
 //			launchpad.getReceiver().send(msg2, -1);
+			
+			changePixel(launchpad, pxl[i], channel, color);
 		}
 	}
 	
