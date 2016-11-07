@@ -30,12 +30,12 @@ public class TwoDArraysIntro {
 		
 		
 		
-//		 arr2D = new String[5][5];
-//		 for (int row = 0; row < arr2D.length; row++) {
-//			for (int col = 0; col < arr2D[row].length; col++) {
-//				arr2D[row][col] = "(" + row + ", " + col + ")";
-//			}
-//		 }
+		 arr2D = new String[5][5];
+		 for (int row = 0; row < arr2D.length; row++) {
+			for (int col = 0; col < arr2D[row].length; col++) {
+				arr2D[row][col] = "(" + row + ", " + col + ")";
+			}
+		 }
 		 
 		 starti = 2;
 		 startj = 2;

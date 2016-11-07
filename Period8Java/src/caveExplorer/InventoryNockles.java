@@ -10,8 +10,41 @@ public class InventoryNockles {
 		updateMap();
 	}
 
-	private void updateMap() {
+	public void updateMap() {
 		CaveRoomPd8[][] caves = CaveExplorer.caves;
+		
+		map = " ";
+		for (int i = 0; i < caves.length - 1; i++) {
+			map += "____";
+		}
+		map += "___\n";
+		
+//		each room
+		for (CaveRoomPd8[] row : caves) {
+//			3 rows of text
+			for (int r = 0; r < 3; r++) {
+				for (CaveRoomPd8 cr : row) {
+					String str = "|   ";
+					String contents = cr.getContents();
+					if (r == 1 && cr.getDoor(CaveRoomPd8.WEST) != null) {
+						str = "  " + contents + " ";
+					}
+					else if (r == 2){
+						if (cr.getDoor(CaveRoomPd8.SOUTH) == null) {
+							str = "|___";
+						}
+						else {
+							str = "|_ _";
+						}
+					}
+					map += str;
+				} //end of row of caverooms
+				map += "|\n";
+			}
+//			map += "|";
+		}
+		
+//		System.out.print(map);
 	}
 
 	public String getDescription() {
@@ -22,5 +55,10 @@ public class InventoryNockles {
 			return "You have no inventory.";
 		}
 	}
+
+	public void setHasMap(boolean b) {
+		hasMap = b;
+	}
+	
 
 }

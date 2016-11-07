@@ -18,7 +18,7 @@ public class CaveRoomPd8 {
 
 	public CaveRoomPd8(String description){
 		this.description = description;
-		setDefaultContents("   ");
+		setDefaultContents(" ");
 		contents = defaultContents;
 
 		borderingRooms = new CaveRoomPd8[4];
@@ -40,19 +40,29 @@ public class CaveRoomPd8 {
 		}else{
 			for(int dir = 0; dir < doors.length; dir++){
 				if(doors[dir] != null){
-//					directions += "\n   There is a "+doors[dir].getDescription()+" to "+toDirection(dir)+". "+doors[dir].getDetails();
+					directions += "\n   There is a "+doors[dir].getDescription()+" to "+toDirection(dir)+". "+doors[dir].getDetails();
 				}
 			}
 		}
 
 	}
 
+	private static String toDirection(int dir) {
+		switch(dir){
+			case NORTH: return "the North";
+			case SOUTH: return "the South";
+			case EAST:  return "the East";
+			case WEST:  return "the West";
+		}
+		return "no particular direction";
+	}
+
 	public String getContents(){
 		return contents;
 	}
 
-	public void enter(){
-		contents = " X ";
+	public void enter() throws InterruptedException{
+		contents = "X";
 	}
 
 	public void leave(){
@@ -108,8 +118,39 @@ public class CaveRoomPd8 {
 		description = string;
 	}
 
-	public void interpretAction(String input) {
+	public void interpretAction(String input) throws InterruptedException {
+		while (!isValid(input.toLowerCase())) {
+			CaveExplorer.print("Please enter 'w', 'a', 's', or 'd'.");
+			input = CaveExplorer.in.nextLine();
+		}
 		
+//		THE KEYS MUST MATCH THE DIRECTIONS CORRECTLY
+		String[] keys = {"w", "d", "s", "a"};
+		int indexFound = -1;
+		for (int i = 0; i < keys.length; i++) {
+			if (keys[i].equals(input)) {
+				indexFound = i;
+				break;
+			}
+		}
+		if (borderingRooms[indexFound] != null && 
+				doors[indexFound].isOpen()) {
+			CaveExplorer.currentRoom.leave();
+			CaveExplorer.currentRoom = borderingRooms[indexFound];
+			CaveExplorer.currentRoom.enter();
+			CaveExplorer.inventory.updateMap();
+		}
+	}
+
+	private static boolean isValid(String input) {
+		String[] validKeys = {"w", "a", "s", "d"};
+		for (String key : validKeys) {
+			if (input.toLowerCase().equals(key)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 }
