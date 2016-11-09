@@ -1,7 +1,5 @@
 package caveExplorer;
 
-import java.util.Arrays;
-
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiEvent;
@@ -16,6 +14,9 @@ import javax.sound.midi.Track;
 import javax.sound.midi.Transmitter;
 import javax.sound.midi.MidiDevice.Info;
 
+import java.util.Arrays;
+import java.util.ArrayList;
+
 public class Launchpad {
 	
 	public static final int WHITE = 3;
@@ -23,6 +24,11 @@ public class Launchpad {
 	public static final int GREEN = 21;
 	public static final int BLUE = 49;
 	public static final int YELLOW = 13;
+	
+//	CHANNEL NUMBERING IN JAVA STARTS AT 0, IN MIDI STARTS AT 1
+	public static final int FLASH = 1;
+	public static final int PULSE = 2;
+	public static final int SOLID = 5;
 	
 	public static final int NOTE_ON = 0x90;
 	
@@ -69,8 +75,8 @@ public class Launchpad {
 			
 		}
 		
-		System.out.println(launchpadInNumber);
-		System.out.println(launchpadDeviceNumber);
+		System.out.println("Receiving from MIDI device " + launchpadInNumber);
+		System.out.println("Sending to MIDI device     " + launchpadDeviceNumber);
 		
 		launchpad = MidiSystem.getMidiDevice(infosA[launchpadDeviceNumber]);
 		launchpadIn = MidiSystem.getMidiDevice(infosA[launchpadInNumber]);
@@ -99,15 +105,15 @@ public class Launchpad {
 				};
 //		display(launchpad, pixelsssss, 3, "solid");
 		
-		long[] times = {500, 200, 500, 200, 500, 200};
+		long[] times = {250, 250, 250, 250, 250, 250};
 		
-		flashImg(launchpad, pixelsssss, GREEN, times, 0, 0, true);
+		flashImg(launchpad, pixelsssss, GREEN, times, 0, 20, true);
 		
 			
 		
 		Thread.sleep(2000);
 		
-		clearPads(launchpad, 2, 0);
+		clearPads(launchpad, 0, 20);
 		
 		System.exit(0);
 	}
@@ -130,16 +136,17 @@ public class Launchpad {
 	}
 	
 	public static void display(MidiDevice device, int[][] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+		
 		for (int i = 0; i < pxl.length; i++) {
 			
-			int channel = 5;
-			
-			if (mode == "blink" || mode == "flash") {
-				channel = 1;
+			int channel;
+			switch (mode) {
+			case "blink": channel = FLASH;
+			case "flash": channel = FLASH;
+			case "pulse": channel = PULSE;
+			default: channel = SOLID;
 			}
-			else if (mode == "pulse" || mode == "fade") {
-				channel = 2;
-			} 
+			
 			
 //			int disp = keys[pxl[i][0]][pxl[i][1]];
 			
@@ -153,20 +160,22 @@ public class Launchpad {
 //			launchpad.getReceiver().send(msg2, -1);
 			
 			changePixel(device, pxl[i], channel, color);
+			
 		}
 	}
 	
 	public static void display(MidiDevice device, int[] pxl, int color, String mode) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+		
+		
 		for (int i = 0; i < pxl.length; i++) {
 			
-			int channel = 5;
-			
-			if (mode == "blink" || mode == "flash") {
-				channel = 1;
+			int channel;
+			switch (mode) {
+			case "blink": channel = FLASH;
+			case "flash": channel = FLASH;
+			case "pulse": channel = PULSE;
+			default: channel = SOLID;
 			}
-			else if (mode == "pulse" || mode == "fade") {
-				channel = 2;
-			} 
 			
 			changePixel(device, pxl, channel, color);
 			
@@ -196,9 +205,9 @@ public class Launchpad {
 				
 				int[] pxl = {i, j};
 
-				changePixel(device, pxl, 1, 0);
-				changePixel(device, pxl, 2, 0);
-				changePixel(device, pxl, 5, 0);
+				changePixel(device, pxl, FLASH, 0);
+				changePixel(device, pxl, PULSE, 0);
+				changePixel(device, pxl, SOLID, 0);
 
 				Thread.sleep(indDelay);
 			}
@@ -282,9 +291,9 @@ public class Launchpad {
 		for (int i = 0; i < keys.length; i++) {
 			for (int j = 0; j < keys[i].length; j++) {
 				int[] toSearchFor = {i,j};
-				System.out.println("searching for " + toSearchFor[0] + " " + toSearchFor[1]);
+//				System.out.println("searching for " + toSearchFor[0] + " " + toSearchFor[1]);
 				int index = arrIndexOf(toSearchFor, pxls);
-				System.out.println(index >= 0);
+//				System.out.println(index >= 0);
 				if(index >= 0) {
 					sortedPixels[count] = pxls[index];
 					count++;
@@ -293,20 +302,70 @@ public class Launchpad {
 		}
 		
 		for (int i = 0; i < times.length; i++) {
-			display(device, sortedPixels, color, "solid");
+			displayDelay(device, sortedPixels, color, "solid", indDelay, rowDelay);
 			Thread.sleep(times[i]);
 			i++;
 			clearPads(device, indDelay, rowDelay);
-			if (i < times.length - 1) {
+			if (i < times.length - 1 || pauseAtEnd) {
 				Thread.sleep(times[i]);
 			}
 		}
 		if(pauseAtEnd) {
-			display(device, sortedPixels, color, "solid");
+			displayDelay(device, sortedPixels, color, "solid", indDelay, rowDelay);
 		}
 	}
 
 
+
+
+
+
+
+	private static void displayDelay(MidiDevice device, int[][] pxls, int color, String mode, int indDelay, int rowDelay) throws InterruptedException, InvalidMidiDataException, MidiUnavailableException {
+		int[][] sortedPixels = new int[pxls.length][2];
+		
+		int count = 0;
+		for (int i = 0; i < keys.length; i++) {
+			for (int j = 0; j < keys[i].length; j++) {
+				int[] toSearchFor = {i,j};
+//				System.out.println("searching for " + toSearchFor[0] + " " + toSearchFor[1]);
+				int index = arrIndexOf(toSearchFor, pxls);
+//				System.out.println(index >= 0);
+				if(index >= 0) {
+					sortedPixels[count] = pxls[index];
+					count++;
+				}
+			}
+		}
+		
+		for (int j = 0; j < keys.length; j++) {
+			for (int i = 0; i < sortedPixels.length; i++) {
+				if(sortedPixels[i][0] == j) {
+					display(device, sortedPixels[i], color, mode);
+					Thread.sleep(indDelay);
+				}
+			}
+			Thread.sleep(rowDelay);
+		}
+	}
+
+	private static int[] indexesIn2DArr(int n, int[][] arr2D) {
+		int[] indexes = {-1, -1};
+		
+		for (int i = 0; i < arr2D.length; i++) {
+			for (int j = 0; j < arr2D[i].length; j++) {
+				int q;
+				q = arr2D[i][j];
+				if (q == n) {
+					indexes[0] = i;
+					indexes[1] = j;
+					return indexes;
+				}
+			}
+		}
+		
+		return indexes;
+	}
 
 
 
