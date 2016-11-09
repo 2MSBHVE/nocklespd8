@@ -23,16 +23,20 @@ public class GameStartEvent implements Playable {
 			CaveExplorer.print("C'mon! You know you like puzzles! Say yes!");
 		}
 		readSequence(SEQUENCE_2, 10);
+		Thread.sleep(500);
 		CaveExplorer.inventory.setHasMap(true);
+		CaveExplorer.printDelay("You obtained a map!", 10);
+		Thread.sleep(2000);
 	}
 	
 	public static void readSequence(String[] seq, long delay) throws InterruptedException{
 		for (int s = 0; s < seq.length - 1; s++) {
 			CaveExplorer.printDelay(seq[s], delay);
-			CaveExplorer.print("- - - press enter - - -");
+			System.out.println("- - - press enter - - -");
 			CaveExplorer.in.nextLine();
 		}
 		CaveExplorer.printDelay(seq[seq.length - 1], delay);
+		System.out.print("\n");
 	}
 
 }
