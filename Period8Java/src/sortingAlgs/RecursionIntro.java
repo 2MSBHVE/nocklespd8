@@ -24,6 +24,11 @@ public class RecursionIntro {
 		
 		hanoiSolution(2, "a", "b", "c");
 	}
+	
+	private static int count = 1;
+	private static void printWCount(String s) {
+		System.out.println("Move #" + count + ": " + s);
+	}
 
 	private static void forLoop(int i, Action action) {
 		action.act();
