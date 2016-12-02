@@ -22,10 +22,10 @@ public class RecursionIntro {
 //		System.out.println(factorial(7));
 //		System.out.println(forctorial(7));
 		
-//		hanoiSolution(8, "a", "b", "c");
+		hanoiSolution(8, "a", "b", "c");
 		
-		long n = 32;
-		System.out.println("The " + n + "th Fibonnacci is " + fibonacci(n));
+		long n = 5;
+//		System.out.println("The " + n + "th Fibonnacci is " + fibonacci(n));
 	}
 	
 	private static long fibonacci(long n) {
