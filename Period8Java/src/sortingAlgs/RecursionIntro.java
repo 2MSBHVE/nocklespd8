@@ -22,12 +22,29 @@ public class RecursionIntro {
 //		System.out.println(factorial(7));
 //		System.out.println(forctorial(7));
 		
-		hanoiSolution(2, "a", "b", "c");
+//		hanoiSolution(8, "a", "b", "c");
+		
+		long n = 32;
+		System.out.println("The " + n + "th Fibonnacci is " + fibonacci(n));
 	}
 	
+	private static long fibonacci(long n) {
+		if (n <= 1) {
+			return 1;
+		}
+		else {
+			long previous = fibonacci(n-1);
+//			printWCount("Before we find fibonacci " + n +", we need to find fibonacci " + (n-1) + ", which is " + previous);
+			long prePrevious = fibonacci(n-1);
+//			System.out.println(previous + prePrevious);
+			return previous + prePrevious;
+		}
+	}
+
 	private static int count = 1;
 	private static void printWCount(String s) {
 		System.out.println("Move #" + count + ": " + s);
+		count++;
 	}
 
 	private static void forLoop(int i, Action action) {
@@ -63,12 +80,14 @@ public class RecursionIntro {
 	
 	public static void hanoiSolution(int numDiscs, String startPeg, String midPeg, String endPeg) {
 		if (numDiscs <= 1) {
-			System.out.println("Move " + startPeg + " to " + endPeg);
+//			System.out.println("Move " + startPeg + " to " + endPeg);
+			printWCount((String)("Move " + startPeg + " to " + endPeg));
 		}
 		else {
+			System.out.println("In order to move " + numDiscs + " discs over to peg " + endPeg + ", we must move " + (numDiscs - 1) + " discs over to peg " + midPeg + " first");
 			hanoiSolution(numDiscs - 1, startPeg, endPeg, midPeg);
 			hanoiSolution(1, startPeg, midPeg, endPeg);
-			hanoiSolution(1, midPeg, startPeg, endPeg);
+			hanoiSolution(numDiscs - 1, midPeg, startPeg, endPeg);
 			
 		}
 	}
