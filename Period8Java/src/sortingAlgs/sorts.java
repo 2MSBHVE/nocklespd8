@@ -8,7 +8,10 @@ public class sorts {
 		// TODO Auto-generated method stub
 
 //		bubbleSort(populateRandInts(0, 50, 25));
-		selectionSort(populateRandInts(0, 50, 25));
+//		selectionSort(populateRandInts(0, 50, 25));
+		
+		int[] arrayToSort={2,1,0,16,8,15};
+		 mysterySort1((arrayToSort));
 		
 	}
 	
@@ -23,6 +26,25 @@ public class sorts {
 	          num[i+1] = key;
 	           System.out.println(java.util.Arrays.toString(num));
 	     }
+	}
+	
+	public static void mysterySort1(int[] arrayToSort){
+		int j=0;
+		int jValue=arrayToSort[0];
+		for(int i=0;i<arrayToSort.length;i++){
+			j=i;
+			jValue=arrayToSort[i];
+			for(int h=i;h<arrayToSort.length;h++){
+				if(arrayToSort[h]<jValue){
+					jValue=arrayToSort[h];
+					j=h;
+				}
+			}
+			int placeHolder=arrayToSort[j];
+			arrayToSort[j]=arrayToSort[i];
+			arrayToSort[i]=placeHolder;
+			System.out.println(Arrays.toString(arrayToSort));
+		}
 	}
 	
 	private static int[] populateSeqInts(int startNum, int length){
