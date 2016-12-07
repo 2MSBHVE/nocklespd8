@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Graphics2D;
 import java.awt.image.*;
 
 public class Screen {
@@ -21,7 +22,7 @@ public class Screen {
 
 	private void update() {
 		// this is where you draw stuff
-		
+		Graphics2D g = image.createGraphics();
 	}
 	
 	public BufferedImage getImage() {
