@@ -1,10 +1,10 @@
-package gui.sampleGames;
+package guiPractice.sampleGames;
 
-import gui.*;
+import guiPractice.GUIApplication;
+import guiPractice.Screen;
 
 public class TheBlankScreenGame extends GUIApplication {
 
-	@Override
 	protected void initScreen() {
 		Screen s = new BlankScreen(getWidth(), getHeight());
 		setScreen(s);

@@ -1,22 +1,21 @@
-package gui;
+package guiPractice;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import gui.components.Visible;
+import guiPractice.components.Visible;
 
 public abstract class Screen {
 
 	private int width;
 	private int height;
-	private ArrayList<Visible> viewObjects;
-	
+	private ArrayList<Visible> viewObjects; 
 	protected BufferedImage image;
-	
+
 	public Screen(int width, int height) {
 		viewObjects = new ArrayList<Visible>();
 		this.width = width;
@@ -24,7 +23,7 @@ public abstract class Screen {
 		initObjects(viewObjects);
 		initImage();
 	}
-	
+
 	public abstract void initObjects(ArrayList<Visible> viewObjects);
 
 	private void initImage() {
@@ -32,34 +31,29 @@ public abstract class Screen {
 		update();
 	}
 
-	private void update() {
-		// this is where you draw stuff
+	public void update() {
+		//this is where you draw stuff
 		Graphics2D g = image.createGraphics();
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
-		
-//		draw all visible components
-		for (Visible v : viewObjects) {
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		//draw all visible components
+		for (Visible v: viewObjects){
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+		/*g.setFont(new Font("Helvetica", Font.PLAIN, 20));
+		g.drawString("Hello", 40, 80);
+		g.drawOval(0, 40, 120, 80);
+		g.drawRect(20, 120, 80, 110);
+		g.drawLine(100, 120, 110, 200);
 		
-		
-//		g.setFont(new Font("Helvetica", Font.PLAIN, 20));
-//		g.drawString("Hello", 40, 80);
-//		g.drawOval(20, 40, 80, 80);
-//		
-//		g.drawRect(20, 120, 80, 110);
-//		g.drawLine(100, 120, 110, 200);
-//		
-//		g.setColor(Color.green);
-//		for (int i = 0; i < image.getWidth(); i+=4) {
-//			g.drawLine(i, 230, i, 238);
-//		}
-		
-		
+		g.setColor(Color.green);
+		for(int i = 0; i < image.getWidth(); i+=4){
+			int length = (int) (8 + Math.random()*5);
+			g.drawLine(i, 230, i, 238);
+		}*/
 	}
 	
-	public BufferedImage getImage() {
+	public BufferedImage getImage(){
 		return image;
 	}
 

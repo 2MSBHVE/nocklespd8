@@ -1,6 +1,6 @@
-package gui.components;
+package guiPractice.components;
 
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 
 public interface Visible {
 
@@ -11,5 +11,4 @@ public interface Visible {
 	public int getHeight();
 	public boolean isAnimated();
 	public void update();
-	
 }
