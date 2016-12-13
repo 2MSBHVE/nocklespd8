@@ -22,6 +22,7 @@ public class TextLabel extends Component {
 
 	public void setText(String s){
 		this.text = s;
+		update();
 	}
 	
 	public String getFont() {
@@ -45,6 +46,7 @@ public class TextLabel extends Component {
 	}
 	
 	public void update(Graphics2D g) {
+		g = clear();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
 		if(text != null){
