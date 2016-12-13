@@ -24,6 +24,18 @@ public class TextLabel extends Component {
 		this.text = s;
 	}
 	
+	public String getFont() {
+		return font;
+	}
+	
+	public String getText() {
+		return text;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
 	public void setFont(String f){
 		this.font = f;
 	}
