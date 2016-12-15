@@ -13,6 +13,42 @@ public class Graphic implements Visible {
 	private int x;
 	private int y;
 
+	public BufferedImage getImage() {
+		return image;
+	}
+	
+	public void setX(int x){
+		this.x = x;
+	}
+	
+	public void setY(int y){
+		this.y = y;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public int getWidth() {
+		return image.getWidth();
+	}
+	
+	public int getHeight() {
+		return image.getHeight();
+	}
+	
+	public void update() {
+		//does nothing, since image never changes
+	}
+	
+	public boolean isAnimated() {
+		return false;
+	}
+	
 	public Graphic(int x, int y, int w, int h, String imageLocation){	
 		this.x = x;
 		this.y = y;
@@ -73,41 +109,6 @@ public class Graphic implements Visible {
 	}
 
 
-	public BufferedImage getImage() {
-		return image;
-	}
-
-	public void setX(int x){
-		this.x = x;
-	}
-
-	public void setY(int y){
-		this.y = y;
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public int getWidth() {
-		return image.getWidth();
-	}
-
-	public int getHeight() {
-		return image.getHeight();
-	}
-
-	public void update() {
-		//does nothing, since image never changes
-	}
-
-	public boolean isAnimated() {
-		return false;
-	}
 
 
 }
