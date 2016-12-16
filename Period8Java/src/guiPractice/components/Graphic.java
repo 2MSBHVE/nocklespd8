@@ -42,7 +42,7 @@ public class Graphic implements Visible {
 	}
 	
 	public void update() {
-		//does nothing, since image never changes
+//		does nothing, since image never changes
 	}
 	
 	public boolean isAnimated() {
@@ -65,7 +65,7 @@ public class Graphic implements Visible {
 
 	private void loadImages(String imageLocation, double scale) {
 		try{
-			//get the full-size image
+//			get the full-size image
 			ImageIcon icon = new ImageIcon(imageLocation);
 
 			int newWidth = (int) (icon.getIconWidth() * scale);
@@ -88,22 +88,23 @@ public class Graphic implements Visible {
 	}
 
 	private void loadImages(String imageLocation, int w, int h) {
-		try{
-			//get the full-size image
+		try {
+//			get the full-size image from file
 			ImageIcon icon = new ImageIcon(imageLocation);
-
-			//use image size of original
-			if(w==0 && h == 0){
+			if (w == 0 && h == 0) {
+//				use original size
 				image = new BufferedImage(icon.getIconWidth(),icon.getIconHeight(),BufferedImage.TYPE_INT_ARGB);
+//				draw image onto graphics
 				Graphics2D g = image.createGraphics();
 				g.drawImage(icon.getImage(), 0, 0, null);
-			}else{
+			}
+			else {
 				image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
 				Graphics2D g = image.createGraphics();
 				g.drawImage(icon.getImage(), 0, 0, w, h, 0,0,icon.getIconWidth(), icon.getIconHeight(), null);
 			}
 			loadedImages = true;
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
