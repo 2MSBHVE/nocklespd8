@@ -70,6 +70,67 @@ public abstract class Screen {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/**
+	 * Remove a visible from the screen
+	 * @param v
+	 */
+	public void remove(Visible v) {
+		/**
+		 * ArrayList notes
+		 * While this method is very simple, do not underestimate
+		 * the trickiness of removing items in an ArrayList. 
+		 * It causes indices to change:
+		 * 
+		 * Example: Suppose you have an ArrayList<Integer>
+		 * and you want to remove all values >5
+		 * THIS IS BAD:
+		 * 
+		 * 	for(int i = 0; i < list.size(); i++) {
+		 * 		if(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 		}
+		 * 	}
+		 * 
+		 * suppose you have (4, 5, 6, 7)
+		 * The first integer to be removed is 6, at index 2
+		 * since it gets removed, 7 moves from index 3 to 2.
+		 * the list is now different.
+		 * Also, where the for loop believes 7 is is now out of bounds
+		 * 
+		 * TO CORRECT THIS: decrease i when removing an item 
+		 * to compensate for the change:
+		 * 	for(int i = 0; i < list.size(); i++) {
+		 * 		if(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 			i--;
+		 * 		}
+		 * 	}
+		 */
+		
+		viewObjects.remove(v);
+		
+		/**
+		 * this removes the object that has the same
+		 * identity as v, not an object equal to v
+		 * */
+	}
+	
+	public void moveToFront(Visible v) {
+		if (viewObjects.contains(v)) {
+			viewObjects.remove(v);
+			viewObjects.add(v);
+		}
+	}
+	
+	public void moveToBack(Visible v) {
+		if (viewObjects.contains(v)) {
+			viewObjects.remove(v);
+			viewObjects.add(0, v);
+//			moves all objects with index => 0 into the what the fuck am i even typing just so Illham can get a good photo of me come on illham dont fail me now im just typeing in order to appear still so that illham can take the photo ILLHAM TAKE THE DAMN PHOTO SO I CAN COPY NOCKLES CODE DAMMIT ILLHAM lmao i say that a lot but seriously illham take the photo already just take the photo i am holding still for the pphoto and not moving my head like a crazed jackrabbit fuck fuc fuck fuck fuck fcufk fuck fuck fuck fcukf ufuck fuck fuck fuck fuck fuck fillham take the photo already i want to copy the code GDI ILLHAM TAKE THE PHOTO YOURE JUST STANDING THERE JUST LEARN TO USE YOUR CAMERA AND TAHE THE FUCKING PHOTO DMAIIT FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK
+//			moves all obkect into ut in the end, the story is always the same. just a small townn boy trying to get aheadj int sdkfjed  sfja jcthe world and succeeding in posing for photos as though he was actually worjing on computer science in nockles classILLHAM TAKE THE PHOTO FOR FUCKS SAKE ILLHAM YOU ARE SO LUCKY i already knew how to do this. otherwise i would be moving my head around so much that it would pain you to see the blur in the photos 
+		}
+	}
 
 
 }

@@ -3,57 +3,62 @@ package guiPractice.sampleGames;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
-import guiPractice.GUIApplication;
+import guiPractice.Screen;
+import guiPractice.components.Visible;
 
-public class MouseFollower extends GUIApplication implements MouseListener, MouseMotionListener {
+public class Assn3Screen extends Screen implements MouseListener,MouseMotionListener {
 
-	private CoordinateScreen coordScreen;
-	public static MouseFollower game;
-	public static Assn3Screen myScreen;
 	
-	public static void main (String[] args){
-		game = new MouseFollower();
-		Thread app = new Thread(game);
-		app.start();
+
+	public Assn3Screen(int width, int height) {
+		super(width, height);
+		// TODO Auto-generated constructor stub
 	}
+
 	@Override
-	protected void initScreen() {
-		myScreen = new Assn3Screen(500, 500);
-		coordScreen = new CoordinateScreen(getWidth(), getHeight());
-//		setScreen(coordScreen);
-		setScreen(myScreen);
+	public void initObjects(ArrayList<Visible> viewObjects) {
+		// TODO Auto-generated method stub
+		
 	}
+
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub

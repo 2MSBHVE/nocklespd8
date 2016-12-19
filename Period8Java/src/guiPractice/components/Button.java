@@ -53,4 +53,8 @@ public class Button extends TextLabel {
 		this.color = color;
 		update();
 	}
+	
+	public boolean isHovered(int x, int y) {
+		return ((x > getX()) && (x < (getX() + getWidth())) && (y > getY()) && (y < (getY() + getHeight())));
+	}
 }

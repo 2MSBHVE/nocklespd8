@@ -101,7 +101,7 @@ public class Graphic implements Visible {
 			else {
 				image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
 				Graphics2D g = image.createGraphics();
-				g.drawImage(icon.getImage(), 0, 0, w, h, 0,0,icon.getIconWidth(), icon.getIconHeight(), null);
+				g.drawImage(icon.getImage(), 0, 0, null);
 			}
 			loadedImages = true;
 		} catch (Exception e) {
