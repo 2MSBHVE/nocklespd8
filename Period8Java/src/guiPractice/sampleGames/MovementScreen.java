@@ -23,7 +23,7 @@ public class MovementScreen extends Screen implements MouseMotionListener, Mouse
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		mario = new Graphic(200,200,.25,"resources/sampleImages/mario.png");
+		mario = new Graphic(200,200,.25,"resources/sampleImages/dude.jpg");
 		back = new Button(50,50,100,60,"Back", Color.GRAY, new Action() {
 			
 			public void act() {

@@ -40,7 +40,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 				MouseFollower.game.setScreen(MouseFollower.moveScreen);
 			}
 		});
-		picture = new Graphic(50,50,.5,"resources/sampleImages/princess.jpg");
+		picture = new Graphic(50,50,.5,"resources/sampleImages/dude.jpg");
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
 		viewObjects.add(button);
