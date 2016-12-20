@@ -1,39 +1,44 @@
 package guiPractice.sampleGames;
 
-public class ThreadExample implements Runnable {
+public class ThreadExample implements Runnable{
 
 	private int number;
 	private int sleepTime;
 	
-	public static void main(String[] args) {
-		for (int i = 0; i < 100; i++) {
-			new Thread(new ThreadExample(i)).start();
-		}
-		
-		
-		
-//		Thread one   = new Thread(new ThreadExample(1));
-//		Thread two   = new Thread(new ThreadExample(2));
-//		Thread three = new Thread(new ThreadExample(3));
-//		one.start();
-//		two.start();
-//		three.start();
+	public static void main(String[] args){
+		Thread one = new Thread(new ThreadExample(1));
+		Thread two = new Thread(new ThreadExample(2));
+		Thread three = new Thread(new ThreadExample(3));
+		one.start();
+		two.start();
+		three.start();
 	}
 	
 	public ThreadExample(int x) {
 		number = x;
-		sleepTime = (int)(1000*Math.random());
+		sleepTime = (int) (1000*Math.random());
 	}
 
 	public void run() {
-		System.out.println("Thread #" + number + " preparing to sleep for " + sleepTime + " ms.");
+		System.out.println("Thread #"+number+
+				" preparing to sleep for "+
+				sleepTime+"ms.");
 		try {
 			Thread.sleep(sleepTime);
+			System.out.println("Thread #"+number+" woke up.");
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Thread #" + number + " woke up.");
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+

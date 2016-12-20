@@ -1,17 +1,14 @@
 package guiPractice.components;
 
-//import java.awt.*;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class Button extends TextLabel {
+public class Button extends TextLabel implements Clickable{
 
 	private Color color;
-
 	private Action action;
 	
 	public Button(int x, int y, int w, int h, String text, Color color, Action action) {
@@ -21,8 +18,16 @@ public class Button extends TextLabel {
 		update();
 	}
 	
-	public void update(Graphics2D g) {
-		g = clear();
+	public Color getColor(){
+		return color;
+	}
+	
+	public void setColor(Color c){
+		color = c;
+		update();
+	}
+	
+	public void update(Graphics2D g){
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(color);
@@ -45,16 +50,23 @@ public class Button extends TextLabel {
 		}
 	}
 
-	public Color getColor() {
-		return color;
-	}
-	
-	public void setColor(Color color) {
-		this.color = color;
-		update();
-	}
-	
+
 	public boolean isHovered(int x, int y) {
-		return ((x > getX()) && (x < (getX() + getWidth())) && (y > getY()) && (y < (getY() + getHeight())));
+		return x>getX() && x<getX()+getWidth() && 
+				y > getY() && y<getY()+getHeight();
 	}
+	
+	public void act(){
+		action.act();
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

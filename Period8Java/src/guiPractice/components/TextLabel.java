@@ -11,7 +11,7 @@ public class TextLabel extends Component {
 	private String text;
 	private String font;
 	private int size;
-	
+
 	public TextLabel(int x, int y, int w, int h, String text) {
 		super(x, y, w, h);
 		this.text = text;
@@ -22,38 +22,55 @@ public class TextLabel extends Component {
 
 	public void setText(String s){
 		this.text = s;
+		update();//picture matches the data
+	}
+
+	public void setSize(int size){
+		this.size = size;
 		update();
 	}
-	
-	public String getFont() {
-		return font;
+
+	public void setFont(String font){
+		this.font = font;
+		update();
 	}
-	
+
+
+
 	public String getText() {
 		return text;
+	}
+
+	public String getFont() {
+		return font;
 	}
 
 	public int getSize() {
 		return size;
 	}
 
-	public void setFont(String f){
-		this.font = f;
-	}
-	
-	public void setSize(int s){
-		this.size = s;
-	}
-	
+	@Override
 	public void update(Graphics2D g) {
-		g = clear();
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g = clear();//clears image and gets new graphics
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+				RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
 		if(text != null){
-			g.setFont(new Font(font, Font.PLAIN, size));
+			g.setFont(new Font(font,Font.PLAIN,size));
 			g.drawString(text, 4, getHeight()-5);
 		}
-		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -11,4 +11,5 @@ public interface Visible {
 	public int getHeight();
 	public boolean isAnimated();
 	public void update();
+	
 }
