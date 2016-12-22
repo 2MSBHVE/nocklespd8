@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import guiPractice.Screen;
 import guiPractice.components.Action;
+import guiPractice.components.Clickable;
 import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
@@ -64,4 +65,6 @@ public class GraphicsClickScreen extends Screen implements MouseListener{
 	public MouseListener getMouseListener(){
 		return this;
 	}
+	
+	
 }

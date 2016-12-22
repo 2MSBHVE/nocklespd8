@@ -90,6 +90,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		
 	}
 
+	
+	
 }
 
 

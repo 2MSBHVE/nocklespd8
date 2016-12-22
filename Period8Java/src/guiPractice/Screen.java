@@ -131,6 +131,10 @@ public abstract class Screen {
 //			moves all obkect into ut in the end, the story is always the same. just a small townn boy trying to get aheadj int sdkfjed  sfja jcthe world and succeeding in posing for photos as though he was actually worjing on computer science in nockles classILLHAM TAKE THE PHOTO FOR FUCKS SAKE ILLHAM YOU ARE SO LUCKY i already knew how to do this. otherwise i would be moving my head around so much that it would pain you to see the blur in the photos 
 		}
 	}
+	
+	public void addObject(Visible v){
+		viewObjects.add(v);
+	}
 
 
 }
