@@ -5,6 +5,7 @@ import guiPractice.GUIApplication;
 public class WhackAMoleGame extends GUIApplication {
 
 	public WhackAMoleGame() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
