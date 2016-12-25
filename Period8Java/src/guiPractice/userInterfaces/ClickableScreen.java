@@ -1,4 +1,4 @@
-package guiPractice.components;
+package guiPractice.userInterfaces;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import guiPractice.Screen;
 import guiPractice.components.Clickable;
 import guiPractice.components.Visible;
 
@@ -21,9 +20,10 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 		// TODO Auto-generated constructor stub
 	}
 
-	public abstract void initAllObjects(ArrayList<Visible> viewObjects);
+	public abstract void initAllObjects(List<Visible> viewObjects);
 	
-	public void initObjects(ArrayList<Visible> viewObjects) {
+	@Override
+	public void initObjects(List<Visible> viewObjects) {
 		initAllObjects(viewObjects);
 		clickables = new ArrayList<Clickable>();
 		for(Visible v: viewObjects){

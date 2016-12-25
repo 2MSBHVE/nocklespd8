@@ -2,69 +2,62 @@ package guiPractice.sampleGames;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.List;
 
-import guiPractice.Screen;
 import guiPractice.components.Action;
-import guiPractice.components.Clickable;
 import guiPractice.components.ClickableGraphic;
-import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
+import guiPractice.userInterfaces.Screen;
 
 public class GraphicsClickScreen extends Screen implements MouseListener{
 
-	private ClickableGraphic corgi;
+	private ClickableGraphic mario;
 	
 	public GraphicsClickScreen(int width, int height) {
 		super(width, height);
-	}
-
-	public void initObjects(ArrayList<Visible> viewObjects) {
-		corgi = new ClickableGraphic(50, 50, .5, "resources/sampleImages/dude.jpg");
-		corgi.setAction(new Action(){
-				public void act() {
-					corgi.setX(corgi.getX() + 50);
-					corgi.setY(corgi.getY() + 50);
-				}
-				
-			});
-		viewObjects.add(corgi);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		if (corgi.isHovered(e.getX(), e.getY())){
-			corgi.act();
+	public void initObjects(List<Visible> viewObjects) {
+		mario = new ClickableGraphic(20, 20, .2, "resources/sampleImages/mario.png");
+		mario.setAction(new Action() {
+			
+			public void act() {
+				mario.setX(mario.getX() + 10);
+			}
+		});
+		viewObjects.add(mario);
+	}
+
+	public void mouseClicked(MouseEvent m) {
+		if(mario.isHovered(m.getX(), m.getY())){
+			mario.act();
 		}
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	public MouseListener getMouseListener(){
 		return this;
 	}
-	
-	
+
 }

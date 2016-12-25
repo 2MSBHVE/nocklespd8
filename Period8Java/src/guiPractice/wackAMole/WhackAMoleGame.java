@@ -1,22 +1,22 @@
-package guiPractice.whackAMole;
+package guiPractice.wackAMole;
 
 import guiPractice.GUIApplication;
 
 public class WhackAMoleGame extends GUIApplication {
 
-	public WhackAMoleGame() {
-		super();
-		// TODO Auto-generated constructor stub
+	public WhackAMoleGame(int width, int height) {
+		super(width, height);
 	}
 
 	@Override
-	protected void initScreen() {
+	public void initScreen() {
 		WhackAMoleScreen wams = new WhackAMoleScreen(getWidth(), getHeight());
 		setScreen(wams);
+				
 	}
 
 	public static void main(String[] args) {
-		WhackAMoleGame game = new WhackAMoleGame();
+		WhackAMoleGame game = new WhackAMoleGame(600, 500);
 		Thread app = new Thread(game);
 		app.start();
 	}

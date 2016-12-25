@@ -4,19 +4,30 @@ import guiPractice.GUIApplication;
 
 public class ClickGraphicsGame extends GUIApplication{
 
-	public static GraphicsClickScreen clickScreen;
-	public static ClickGraphicsGame game;
-	
-	
+	public ClickGraphicsGame() {
+		super(500,500);
+	}
+
 	public static void main(String[] args) {
-		game = new ClickGraphicsGame();
-		Thread app = new Thread(game);
+		ClickGraphicsGame cgg = new ClickGraphicsGame();
+		Thread app = new Thread(cgg);
 		app.start();
 	}
 
 	@Override
-	protected void initScreen() {
-		clickScreen = new GraphicsClickScreen(getWidth(), getHeight());
-		setScreen(clickScreen);
+	public void initScreen() {
+		GraphicsClickScreen gcs = new GraphicsClickScreen(getWidth(), getHeight());
+//		MyPracticeClickableScreen pcs = new MyPracticeClickableScreen(getWidth(), getHeight());
+		setScreen(gcs);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
