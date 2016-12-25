@@ -8,7 +8,7 @@ public class Mole extends ClickableGraphic implements MoleInterface {
 	
 
 	public Mole(int x, int y) {
-		super(x, y, .50, "resources/sampleImages/mole.jpg");
+		super(x, y, .50, "resources/sampleImages/dude.jpg");
 	}
 
 	public void setAppearanceTime(double d) {
