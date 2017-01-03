@@ -56,10 +56,21 @@ public abstract class Screen {
 		g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		g.setColor(Color.black);
 		//iterate through all view objects
-		for(Visible v: viewObjects){
-			if(v.isAnimated())v.update();
+		
+////		INCORRECT	
+////		for(Visible v: viewObjects){
+////			if(v.isAnimated())v.update();
+////			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
+////		}
+		
+		for (int i = 0; i < viewObjects.size(); i++) {
+			Visible v = viewObjects.get(i);
+			if(v.isAnimated()) {
+				v.update();
+			}
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+		
 //		g.drawString("Look! Text is printed!", 30, 60);
 	}
 	
