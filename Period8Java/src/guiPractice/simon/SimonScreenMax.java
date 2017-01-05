@@ -14,8 +14,8 @@ public class SimonScreenMax extends ClickableScreen implements Runnable {
 
 	public TextLabel txtlbl;
 	public ButtonInterfaceMax[] btnIntArr;
-	public ProgressInterfaceMax progInt;
-	public ArrayList<MoveInterfaceMax> mvInts;
+	public ProgressInterfaceMax progress;
+	public ArrayList<MoveInterfaceMax> sequence;
 	public int roundNumber;
 	public boolean takingUserInput;
 	
@@ -49,6 +49,51 @@ public class SimonScreenMax extends ClickableScreen implements Runnable {
 		viewObjects.add(progress);
 		viewObjects.add(txtlbl);
 
+	}
+
+	private MoveInterfaceMax randomMove() {
+		ButtonInterfaceMax b;
+		
+		//code that randomly selects a ButtonInterfaceX
+		int r = randomNum(0, (btnIntArr.length - 1));
+		while (r == lastSelectedButton) {
+			r = randomNum(0, (btnIntArr.length - 1));
+		}
+		b = btnIntArr[r];
+		
+		return getMove(b);
+	}
+	
+	private MoveInterfaceMax getMove(ButtonInterfaceMax b) {
+		// TODO Auto-generated method stub
+		/**
+		Placeholder until partner finishes implementation of MoveInterface
+		*/
+		return null;
+	}
+
+	private static int randomNum(int a, int b) {
+		if (a == b) {
+			return a;
+		}
+		if (a > b){
+			int swap = b;
+			b = a;
+			a = swap;
+		}
+		b = b - a + 1;
+//		System.out.println(a + " " + b);
+		double rand = Math.random();//returns a double (0,1)
+		int x = (int) (b*rand) + a;//[a,b]
+		return x;
+	}
+
+	private ProgressInterfaceMax getProgress() {
+		// TODO Auto-generated method stub
+		/**
+		Placeholder until partner finishes implementation of ProgressInterface
+		*/
+		return null;
 	}
 
 	private void addButtons() {
