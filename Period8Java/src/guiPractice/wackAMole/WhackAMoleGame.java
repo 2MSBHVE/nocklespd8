@@ -5,7 +5,7 @@ import guiPractice.GUIApplication;
 public class WhackAMoleGame extends GUIApplication {
 
 	public WhackAMoleGame(int width, int height) {
-		super(width, height);
+		super();
 	}
 
 	@Override

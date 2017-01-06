@@ -5,7 +5,7 @@ import guiPractice.GUIApplication;
 public class ClickGraphicsGame extends GUIApplication{
 
 	public ClickGraphicsGame() {
-		super(500,500);
+		super();
 	}
 
 	public static void main(String[] args) {

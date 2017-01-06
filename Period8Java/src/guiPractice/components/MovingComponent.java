@@ -1,15 +1,18 @@
 package guiPractice.components;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
-public class MovingComponent extends Component implements Runnable {
+
+public class MovingComponent extends Component 
+       implements Runnable {
 
 	private double vx;
 	private double vy;
 	private double posx;
 	private double posy;
 	private boolean running;
-	private long moveTime; // time when the image last moved
+	private long moveTime;//time when the image last moved
 	
 	public static final int REFRESH_RATE = 20;
 	
@@ -20,63 +23,54 @@ public class MovingComponent extends Component implements Runnable {
 		running = false;
 	}
 	
-	public boolean isAnimated() {
+	public boolean isAnimated(){
 		return true;
 	}
 
-	@Override
 	public void run() {
 		posx = getX();
 		posy = getY();
 		running = true;
 		moveTime = System.currentTimeMillis();
-		
-		while (running) {
+		while(running){
 			try {
 				Thread.sleep(REFRESH_RATE);
-				
 				checkBehaviors();
-				
 				update();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 
 	public void checkBehaviors() {
-		if (getY() > 300) {
+		if(getY() > 300){
 			setY(300);
-			vy *= -1;
-		}
-		else if (getY() < 0) {
-			setY(0);
-			vy *= -1;
+			vy*=-1;
 		}
 	}
 
 	@Override
 	public void update(Graphics2D g) {
 		long currentTime = System.currentTimeMillis();
-//		calculates time since last move
+		//calculates time since last move
 		long difference = currentTime - moveTime;
-		
-		if (difference >= REFRESH_RATE) {
-//			//an update is happening, so update moveTime
+		if(difference >= REFRESH_RATE){
+			//an update is happening, so update moveTime
 			moveTime = currentTime;
-//			// calculate new position
-			posx += vx * ((double)(difference / REFRESH_RATE));
-			posy += vy * ((double)(difference / REFRESH_RATE));
-//			// set only location on screen, not actual location
-			super.setX((int)(posx));
-			super.setY((int)(posy));
+			//calculate new postion
+			posx += vx*(double)difference/REFRESH_RATE;
+			posy += vy*(double)difference/REFRESH_RATE;
+			//set only the location on the screen
+			//NOT the actual position
+			super.setX((int)posx);
+			super.setY((int)posy);	
 		}
-		
 		drawImage(g);
 	}
 	
-	private void drawImage(Graphics2D g) {
+	public void drawImage(Graphics2D g) {
+		g.setColor(Color.black);
 		g.fillOval(0, 0, getWidth(), getHeight());
 	}
 
@@ -114,4 +108,24 @@ public class MovingComponent extends Component implements Runnable {
 		this.running = running;
 	}
 
+	public void play() {
+		if(!running){
+			Thread go = new Thread(this);
+			go.start();
+		}
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

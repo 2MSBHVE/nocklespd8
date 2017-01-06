@@ -2,12 +2,13 @@ package guiPractice.sampleGames;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import guiPractice.components.Action;
 import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Visible;
-import guiPractice.userInterfaces.Screen;
+import guiPractice.Screen;
 
 public class GraphicsClickScreen extends Screen implements MouseListener{
 
@@ -18,7 +19,6 @@ public class GraphicsClickScreen extends Screen implements MouseListener{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void initObjects(List<Visible> viewObjects) {
 		mario = new ClickableGraphic(20, 20, .2, "resources/sampleImages/mario.png");
 		mario.setAction(new Action() {
@@ -58,6 +58,12 @@ public class GraphicsClickScreen extends Screen implements MouseListener{
 	
 	public MouseListener getMouseListener(){
 		return this;
+	}
+
+	@Override
+	public void initObjects(ArrayList<Visible> viewObjects) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

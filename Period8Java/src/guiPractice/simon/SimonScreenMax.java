@@ -8,7 +8,7 @@ import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
-import guiPractice.userInterfaces.ClickableScreen;
+import guiPractice.ClickableScreen;
 
 public class SimonScreenMax extends ClickableScreen implements Runnable {
 

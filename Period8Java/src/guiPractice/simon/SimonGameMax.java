@@ -6,7 +6,7 @@ import guiPractice.GUIApplication;
 public class SimonGameMax extends GUIApplication {
 
 	public SimonGameMax(int width, int height) {
-		super(width, height);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

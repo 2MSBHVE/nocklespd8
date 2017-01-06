@@ -1,4 +1,4 @@
-package guiPractice.userInterfaces;
+package guiPractice;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -10,6 +10,8 @@ import java.util.List;
 
 import guiPractice.components.Clickable;
 import guiPractice.components.Visible;
+
+
 
 public abstract class ClickableScreen extends Screen implements MouseListener {
 
@@ -23,7 +25,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	public abstract void initAllObjects(List<Visible> viewObjects);
 	
 	@Override
-	public void initObjects(List<Visible> viewObjects) {
+	public void initObjects(ArrayList<Visible> viewObjects) {
 		initAllObjects(viewObjects);
 		clickables = new ArrayList<Clickable>();
 		for(Visible v: viewObjects){
@@ -34,7 +36,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent m) {
-		for (int i = 0; i < clickables.size(); i++) {
+		for(int i = 0; i < clickables.size(); i++){
 			Clickable c = clickables.get(i);
 			if(c.isHovered(m.getX(), m.getY())){
 				c.act();
