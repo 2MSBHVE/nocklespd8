@@ -20,11 +20,11 @@ public class GraphicsClickScreen extends Screen implements MouseListener{
 	}
 
 	public void initObjects(List<Visible> viewObjects) {
-		mario = new ClickableGraphic(20, 20, .2, "resources/sampleImages/mario.png");
+		mario = new ClickableGraphic(20, 20, .2, "resources/sampleImages/dude.jpg");
 		mario.setAction(new Action() {
 			
 			public void act() {
-				mario.setX(mario.getX() + 10);
+				
 			}
 		});
 		viewObjects.add(mario);

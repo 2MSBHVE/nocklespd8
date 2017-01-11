@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 
-public class MovingComponent extends Component implements Runnable {
+public abstract class MovingComponent extends Component implements Runnable {
 
 	private double vx;
 	private double vy;
@@ -42,12 +42,7 @@ public class MovingComponent extends Component implements Runnable {
 		}
 	}
 
-	public void checkBehaviors() {
-		if(getY() > 300){
-			setY(300);
-			vy*=-1;
-		}
-	}
+	public abstract void checkBehaviors();
 
 	@Override
 	public void update(Graphics2D g) {
@@ -68,10 +63,7 @@ public class MovingComponent extends Component implements Runnable {
 		drawImage(g);
 	}
 	
-	public void drawImage(Graphics2D g) {
-		g.setColor(Color.black);
-		g.fillOval(0, 0, getWidth(), getHeight());
-	}
+	public abstract void drawImage(Graphics2D g);
 
 	public void setX(int x){
 		super.setX(x);
