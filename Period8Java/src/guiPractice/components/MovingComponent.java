@@ -4,8 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 
-public class MovingComponent extends Component 
-       implements Runnable {
+public class MovingComponent extends Component implements Runnable {
 
 	private double vx;
 	private double vy;
@@ -32,7 +31,7 @@ public class MovingComponent extends Component
 		posy = getY();
 		running = true;
 		moveTime = System.currentTimeMillis();
-		while(running){
+		while (running) {
 			try {
 				Thread.sleep(REFRESH_RATE);
 				checkBehaviors();
