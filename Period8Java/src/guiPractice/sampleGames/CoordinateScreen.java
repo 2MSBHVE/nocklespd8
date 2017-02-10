@@ -126,6 +126,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		}
 		
 		viewObjects.add(a);
+		a.setVx(2);
 		a.play();
 	}
 
