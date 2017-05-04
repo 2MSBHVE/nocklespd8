@@ -3,3 +3,5 @@ Max Friedman
 
 Goal for today: Begin reacquisition of knowledge on PHP
 
+Progress:
+	I have begun on the path to regaining a working knowledge of PHP. Hopefully I can use this knowledge to implement server queries into the scheduler.
