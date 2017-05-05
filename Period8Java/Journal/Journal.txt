@@ -12,3 +12,9 @@ Max Friedman
 5/5/2017
 
 	Goal for Today: Continue reacquisition of knowledge on PHP
+	
+	Progress:
+		I have rediscovered that PHP is easier than it appears to be. Full steam ahead.
+		
+	Goal for Monday 5/8/2017:
+		Reacquire knowledge on using PHP in webpages with forms
