@@ -18,3 +18,9 @@ Max Friedman
 		
 	Goal for Monday 5/8/2017:
 		Reacquire knowledge on using PHP in webpages with forms
+	
+	
+		
+5/9/2017
+
+	Goal for Today: Attempt to connect to MAMP MySQL from PHP
