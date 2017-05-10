@@ -24,3 +24,9 @@ Max Friedman
 5/9/2017
 
 	Goal for Today: Attempt to connect to MAMP MySQL from PHP
+	
+	
+	
+5/10/2017
+
+	Progress: PHP code recognizes MySQL server, but cannot find the database
