@@ -35,3 +35,5 @@ Max Friedman
 5/11/2017
 
 	Goal: MAKE PHP SQL WORK
+	
+	Progress: After completely ruining our local MySQL server, we have decided to use a static XML file instead.
