@@ -30,3 +30,8 @@ Max Friedman
 5/10/2017
 
 	Progress: PHP code recognizes MySQL server, but cannot find the database
+	
+	
+5/11/2017
+
+	Goal: MAKE PHP SQL WORK
