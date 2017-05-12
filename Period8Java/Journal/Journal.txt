@@ -45,3 +45,5 @@ Max Friedman
 		Using AJAX, we were able to get and display data from the MAMP MySQL server.  
 		
 	Goal: Create tables to store the data relevant to the scheduler.
+	
+	Progress: Yep, still workin on that.
