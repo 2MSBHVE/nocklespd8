@@ -37,3 +37,11 @@ Max Friedman
 	Goal: MAKE PHP SQL WORK
 	
 	Progress: After completely ruining our local MySQL server, we have decided to use a static XML file instead.
+	
+5/12/2017
+
+	UPDATE:
+		WE MADE SQL WORK!
+		Using AJAX, we were able to get and display data from the MAMP MySQL server.  
+		
+	Goal: Create tables to store the data relevant to the scheduler.
