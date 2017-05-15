@@ -47,3 +47,11 @@ Max Friedman
 	Goal: Create tables to store the data relevant to the scheduler.
 	
 	Progress: Yep, still workin on that.
+	
+
+5/15/2017
+
+	Goal: Finish gathering data on courses, create tables in MAMP phpMyAdmin SQL, and import into the MAMP phpMyAdmin SQL database.
+	
+	Progress:
+		Still in the process of creating tables and importing values.
