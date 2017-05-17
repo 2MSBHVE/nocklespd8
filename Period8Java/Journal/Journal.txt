@@ -64,4 +64,5 @@ Max Friedman
 	To-Do:
 		Will ask Mr. Goldman to have the students on Computer 01 refrain from damaging our MAMP install.
 		
-	
+	Progress:
+		Continued gathering data on courses. Continued designing entities for the database.
