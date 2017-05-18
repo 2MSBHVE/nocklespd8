@@ -66,3 +66,10 @@ Max Friedman
 		
 	Progress:
 		Continued gathering data on courses. Continued designing entities for the database.
+		
+
+5/18/2017
+
+	Goal: Remake database on Computer 20
+	
+	Progress: Recreated database on Computer 20 (stable) and imported course data for Queens and Brooklyn College.
