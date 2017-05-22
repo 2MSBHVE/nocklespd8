@@ -73,3 +73,7 @@ Max Friedman
 	Goal: Remake database on Computer 20
 	
 	Progress: Recreated database on Computer 20 (stable) and imported course data for Queens and Brooklyn College.
+	
+5/21/2017
+
+	Goal: Do tables good.
