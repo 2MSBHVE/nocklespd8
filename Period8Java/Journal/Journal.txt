@@ -74,6 +74,9 @@ Max Friedman
 	
 	Progress: Recreated database on Computer 20 (stable) and imported course data for Queens and Brooklyn College.
 	
-5/21/2017
+5/22/2017
 
 	Goal: Do tables good.
+	
+	Progress:
+		Did tables good. Considering the option of adding another column to certain COURSES tables to differentiate which particular subject the course is in (for curriculum requirement purposes, etc)
