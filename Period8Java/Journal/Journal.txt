@@ -80,3 +80,9 @@ Max Friedman
 	
 	Progress:
 		Did tables good. Considering the option of adding another column to certain COURSES tables to differentiate which particular subject the course is in (for curriculum requirement purposes, etc)
+		
+		
+5/23/2017
+
+	Goal:
+		Begin writing PHP scripts to use the data stored in the MySQL server.
