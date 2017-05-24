@@ -86,3 +86,9 @@ Max Friedman
 
 	Goal:
 		Begin writing PHP scripts to use the data stored in the MySQL server.
+	
+		
+5/24/2017
+
+	Progress:
+		Created PHP/JavaScript allowing users to select courses without duplicates. Will need more work.
