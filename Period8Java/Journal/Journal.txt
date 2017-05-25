@@ -92,3 +92,10 @@ Max Friedman
 
 	Progress:
 		Created PHP/JavaScript allowing users to select courses without duplicates. Will need more work.
+		
+		
+5/25/2017
+
+	Progress:
+		Began framework to determine whether the user's choice of courses satisfies their course requirements.
+		Currently, the framework, written as another PHP page, receives (and returns, for debug purposes) a manipulable list of the courses selected. 
