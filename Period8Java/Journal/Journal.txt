@@ -98,4 +98,9 @@ Max Friedman
 
 	Progress:
 		Began framework to determine whether the user's choice of courses satisfies their course requirements.
-		Currently, the framework, written as another PHP page, receives (and returns, for debug purposes) a manipulable list of the courses selected. 
+		Currently, the framework, written as another PHP page, receives (and returns, for debug purposes) a manipulable list of the courses selected.
+		
+5/30/2017
+
+	Progress:
+		Created mechanism to deselect courses. 
