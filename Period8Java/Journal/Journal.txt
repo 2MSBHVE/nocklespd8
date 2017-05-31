@@ -104,3 +104,11 @@ Max Friedman
 
 	Progress:
 		Created mechanism to deselect courses. 
+		
+		
+5/31/2017
+
+	Goal:
+		Assist Alan and Javiy in creating the presentation.
+		
+	
