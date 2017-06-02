@@ -111,4 +111,13 @@ Max Friedman
 	Goal:
 		Assist Alan and Javiy in creating the presentation.
 		
+	Progress:
+		Managed to successfully perform the MySQL queries using PHP on a Windows computer. However, this computer was Anthony's personal laptop, so results may vary on the DOE computers. Will test on DOE computer tomorrow.
 	
+		
+6/1/2017
+
+	Goal: Attempt to get the same results as yesterday, but on a DOE computer.
+	
+	Progress:
+		Managed to perform queries using the same technique, but the DOE computers in 5E7 are not ideal because they have both WAMPserver and MAMPserver installed, and this causes strange issues.
