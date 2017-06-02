@@ -128,4 +128,5 @@ Max Friedman
 		
 	Progress:
 		IT WORKS! (Also, must again reinstall MAMPserver due to strange phpMyAdmin screwup.)
+		Began integrating our code with Alan/Javiy's website.
 		
