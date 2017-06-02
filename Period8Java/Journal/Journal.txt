@@ -121,3 +121,11 @@ Max Friedman
 	
 	Progress:
 		Managed to perform queries using the same technique, but the DOE computers in 5E7 are not ideal because they have both WAMPserver and MAMPserver installed, and this causes strange issues.
+		
+6/2/2017
+
+	Goal: Same
+		
+	Progress:
+		IT WORKS! (Also, must again reinstall MAMPserver due to strange phpMyAdmin screwup.)
+		
