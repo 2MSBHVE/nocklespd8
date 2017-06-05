@@ -130,3 +130,8 @@ Max Friedman
 		IT WORKS! (Also, must again reinstall MAMPserver due to strange phpMyAdmin screwup.)
 		Began integrating our code with Alan/Javiy's website.
 		
+		
+6/5/2017
+
+	Goal: Integrate our code with Alan/Javiy's website
+		
