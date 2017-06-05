@@ -134,4 +134,7 @@ Max Friedman
 6/5/2017
 
 	Goal: Integrate our code with Alan/Javiy's website
+	
+	Progress:
+		Still working on changing courses dropdown with school selection
 		
