@@ -142,3 +142,9 @@ Max Friedman
 6/6/2017
 
 	Goal: Work on changing courses dropdown with school selection
+	
+	Progress:
+		Discovered an extremely useful method: Using data-* attributes to store additional data in HTML elements and pass that data to functions.
+		This will make things much easier when I clean up the functions that pass course data around the page.
+		I have begun implementing this method into the SQL testing page.
+		This was a very productive (spoiler alert) "session".
