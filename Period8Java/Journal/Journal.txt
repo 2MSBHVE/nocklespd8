@@ -137,4 +137,8 @@ Max Friedman
 	
 	Progress:
 		Still working on changing courses dropdown with school selection
+
 		
+6/6/2017
+
+	Goal: Work on changing courses dropdown with school selection
