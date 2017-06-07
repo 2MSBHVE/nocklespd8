@@ -148,3 +148,11 @@ Max Friedman
 		This will make things much easier when I clean up the functions that pass course data around the page.
 		I have begun implementing this method into the SQL testing page.
 		This was a very productive (spoiler alert) "session".
+		
+		
+6/7/2017
+
+	Goal: Polish SQL statements, prepare to finally implement in Alan/Javiy's code.
+	
+	Progress:
+		Ready.
